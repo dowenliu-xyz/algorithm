@@ -1,5 +1,9 @@
 package xyz.dowenliu.study.algo._05_array;
 
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+
 /**
  * 定长int数组。提供数据的插入、删除、按照下标随机访问操作
  * <p>create at 2019/11/25</p>
@@ -7,7 +11,7 @@ package xyz.dowenliu.study.algo._05_array;
  * @author liufl
  * @since version 1.0
  */
-public class SizeFixedIntArray {
+public class SizeFixedIntArray implements IntArray {
     // 内部数组，用于保存数据
     private int[] data;
     // 数组中实际元素个数
@@ -23,116 +27,101 @@ public class SizeFixedIntArray {
         this.size = 0;
     }
 
-    public int getCapacity() {
+    @Override
+    public int capacity() {
         return this.data.length;
     }
 
-    public int getSize() {
+    @Override
+    public int size() {
         return size;
     }
 
-    /**
-     * 根据索引，查找并返回数组对应位置存储的值
-     *
-     * @param index 索引
-     * @return 找到的值
-     * @throws IndexOutOfBoundsException 如果索引小于0或大于等于{@link #getSize()}
-     */
+    @Override
     public int get(int index)
-            throws ArrayIndexOutOfBoundsException {
-        if (index < 0 || index >= this.size) {
-            throw new IndexOutOfBoundsException(index);
+            throws ArrayIndexOutOfBoundsException, NoSuchElementException {
+        if (index >= this.size) {
+            throw new NoSuchElementException("No value at index " + index);
         }
         return this.data[index];
     }
 
-    /**
-     * 插入值
-     *
-     * @param index 插入位置。在{@code index} 指定的位置前插入
-     * @param value 要插入的值
-     * @return {@code true} 成功插入；{@code false} 插入失败，数据未变更
-     * @throws IndexOutOfBoundsException 尝试在有效位置外插入值，破坏存储的连续性
-     */
+    @Override
     public boolean insertAt(int index, int value)
-            throws IndexOutOfBoundsException {
+            throws ArrayIndexOutOfBoundsException {
         if (this.size == this.data.length) {
-            System.out.println("数组已满，没有可插入的空间"); // 日志
             return false;
         }
         if (index < 0 || index > this.size) {
-            throw new IndexOutOfBoundsException(index);
+            throw new ArrayIndexOutOfBoundsException(index);
         }
-        for (int i = this.size; i > index; i--) {
-            this.data[i] = this.data[i - 1];
-        }
+        System.arraycopy(this.data, index, this.data, index + 1,
+                this.size - index);
         this.data[index] = value;
         this.size++;
         return true;
     }
 
-    /**
-     * 删除值
-     *
-     * @param index 要删除值的索引位置
-     * @throws IndexOutOfBoundsException 索引位置没有有效值
-     */
-    public void removeAt(int index) throws IndexOutOfBoundsException {
-        if (index < 0 || index >= this.size) {
-            throw new IndexOutOfBoundsException(index);
+    @Override
+    public int removeAt(int index)
+            throws NoSuchElementException, ArrayIndexOutOfBoundsException {
+        if (index >= this.size) {
+            throw new NoSuchElementException("No value at index " + index);
         }
-        for (int i = index + 1; i < this.size; i++) {
-            data[i - 1] = data[i];
+        var removed = this.data[index];
+        if (this.size - index + 1 >= 0) {
+            System.arraycopy(data, index + 1, data,
+                    index + 1 - 1, this.size - index - 1);
         }
         this.data[size - 1] = 0;
         this.size--;
+        return removed;
     }
 
-    public void printAll() {
+    @Override
+    public void clear() {
         for (int i = 0; i < this.size; i++) {
-            System.out.print(data[i] + " ");
+            this.data[i] = 0;
         }
-        System.out.println();
+        this.size = 0;
     }
 
-    public static void main(String[] args) {
-        SizeFixedIntArray array = new SizeFixedIntArray(5);
-        array.printAll();
-        try {
-            array.insertAt(2, 3);
-        } catch (IndexOutOfBoundsException e) {
-            array.printAll();
-            System.out.println("insert at 2, catch " + e.getMessage());
+    @Override
+    public int set(int index, int value) throws IndexOutOfBoundsException {
+        if (index >= this.size) {
+            throw new IndexOutOfBoundsException(index);
         }
-        array.insertAt(0, 3); // 3
-        array.printAll();
-        array.insertAt(0, 4); // 4 3
-        array.printAll();
-        array.insertAt(1, 5); // 4 5 3
-        array.printAll();
-        array.insertAt(3, 9); // 4 5 3 9
-        array.printAll();
-        array.insertAt(3, 10); // 4 5 3 10 9
-        array.printAll();
-        boolean success = array.insertAt(0, 0);
-        if (!success) {
-            System.out.println("Failed to insert, cause the array is full");
-        } else {
-            System.out.println("Oh, inserted!");
-            array.printAll();
-        }
-        array.removeAt(0);
-        array.printAll();
-        try {
-            array.removeAt(4);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("catch " + e.getMessage());
-        }
-        System.out.println("value at index 1 is " + array.get(1));
-        try {
-            System.out.println("value at index 4 is " + array.get(4));
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("get value at 4, catch " + e.getMessage());
-        }
+        var replaced = this.data[index];
+        this.data[index] = value;
+        return replaced;
+    }
+
+    @Override
+    public int[] values() {
+        return Arrays.copyOfRange(this.data, 0, this.size);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof IntArray)) return false;
+        IntArray array = (IntArray) o;
+        return size == array.size() &&
+                Arrays.equals(this.values(), array.values());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(size);
+        result = 31 * result + Arrays.hashCode(this.values());
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "SizeFixedIntArray{" +
+                "data=" + Arrays.toString(data) +
+                ", size=" + size +
+                '}';
     }
 }
