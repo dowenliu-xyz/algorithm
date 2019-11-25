@@ -52,9 +52,6 @@ public interface IntArray extends Cloneable {
      * @return 如果添加成功，返回 {@code true}；否则，返回 {@code false}
      */
     default boolean append(int value) {
-        if (this.size() == this.capacity()) {
-            return false;
-        }
         return this.insertAt(this.size(), value);
     }
 

@@ -3,22 +3,25 @@ package xyz.dowenliu.study.algo._05_array;
 import java.util.NoSuchElementException;
 
 /**
- * 定长int数组。提供数据的插入、删除、按照下标随机访问操作
+ * 自动扩容 {@code int} 数组。
+ * <p>
+ * 当插入值时，发现容量已满则自动扩容为原容量的两倍。
  * <p>create at 2019/11/25</p>
  *
  * @author liufl
  * @since version 1.0
  */
-public class SizeFixedIntArray implements IntArray {
-    private final IntArrayOperator operator;
+public class DynanicExpandIntArray implements IntArray {
+    private static final int DEFAULT_INITIAL_CAPACITY = 8;
 
-    /**
-     * 构建定长int数组
-     *
-     * @param capacity 存储容量
-     */
-    public SizeFixedIntArray(int capacity) {
-        this.operator = new IntArrayOperator(new int[capacity], 0);
+    private IntArrayOperator operator;
+
+    public DynanicExpandIntArray() {
+        this(DEFAULT_INITIAL_CAPACITY);
+    }
+
+    public DynanicExpandIntArray(int initialCapacity) {
+        this.operator = new IntArrayOperator(new int[initialCapacity], 0);
     }
 
     @Override
@@ -34,11 +37,19 @@ public class SizeFixedIntArray implements IntArray {
     @Override
     public boolean insertAt(int index, int value)
             throws ArrayIndexOutOfBoundsException {
-        if (this.isFull()) {
-            return false;
-        }
         this.operator.validateInsertIndex(index);
+        if (this.isFull()) {
+            expand();
+        }
         return this.operator.doInsertAt(index, value);
+    }
+
+    private void expand() {
+        final double expandRatio = 2.0;
+        int[] full = this.operator.getData();
+        int[] expanded = new int[(int) (full.length * expandRatio)];
+        System.arraycopy(full, 0, expanded, 0, this.size());
+        this.operator.setData(expanded);
     }
 
     @Override
