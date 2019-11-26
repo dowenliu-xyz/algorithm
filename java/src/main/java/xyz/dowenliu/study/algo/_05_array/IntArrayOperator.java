@@ -113,6 +113,11 @@ class IntArrayOperator implements IntArray {
         return Arrays.copyOfRange(this.data, 0, this.size);
     }
 
+    @Override
+    public Array<Integer> boxed() {
+        return new ArrayOperator<>(Arrays.stream(this.data).boxed().toArray(Integer[]::new), this.size);
+    }
+
     boolean isEqualsTo(Object o) {
         if (this == o) return true;
         if (!(o instanceof IntArray)) return false;

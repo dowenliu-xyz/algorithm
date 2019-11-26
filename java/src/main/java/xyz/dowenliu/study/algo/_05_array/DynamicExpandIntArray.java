@@ -79,6 +79,11 @@ public class DynamicExpandIntArray implements IntArray {
         return this.operator.values();
     }
 
+    @Override
+    public Array<Integer> boxed() {
+        return new DynamicExpandArray<>(this.capacity(), Integer[]::new);
+    }
+
     @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     @Override
     public boolean equals(Object o) {

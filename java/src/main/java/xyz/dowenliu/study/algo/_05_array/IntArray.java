@@ -154,5 +154,5 @@ public interface IntArray extends Cloneable {
         }
     }
 
-//    Array<Integer> boxed(); // TODO boxed
+    Array<Integer> boxed();
 }

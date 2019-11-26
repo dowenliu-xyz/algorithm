@@ -68,6 +68,11 @@ public class SizeFixedIntArray implements IntArray {
         return this.operator.values();
     }
 
+    @Override
+    public Array<Integer> boxed() {
+        return new SizeFixedArray<>(this.capacity(), Integer[]::new);
+    }
+
     @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     @Override
     public boolean equals(Object o) {
