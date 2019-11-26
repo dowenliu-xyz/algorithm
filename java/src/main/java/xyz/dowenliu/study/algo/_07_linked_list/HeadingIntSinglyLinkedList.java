@@ -2,16 +2,15 @@ package xyz.dowenliu.study.algo._07_linked_list;
 
 import java.io.Serializable;
 import java.util.Arrays;
-import java.util.Objects;
 
 /**
- * 无头 {@code int} 单链表
+ * 有头  {@code int} 单链表
  * <p>create at 2019/11/26</p>
  *
  * @author liufl
  * @since version 1.0
  */
-public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
+public class HeadingIntSinglyLinkedList implements IntList, Serializable {
     private static class Node implements Serializable {
         int value;
         Node next;
@@ -22,7 +21,7 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
         }
     }
 
-    private Node head;
+    private Node head = new Node(0, null);
     private int size;
 
     @Override
@@ -31,11 +30,11 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
     }
 
     private Node nodeAt(int index) {
-        if (index < 0) {
+        if (index < -1) {
             return null;
         }
         Node cursor = this.head;
-        int position = 0;
+        int position = -1;
         while (position != index && cursor != null) {
             cursor = cursor.next;
             position++;
@@ -65,14 +64,6 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
     @SuppressWarnings("DuplicatedCode")
     private Node nodeBeforeValue(int value) {
         Node cursor = this.head;
-        if (cursor == null) {
-            // no node in this list
-            return null;
-        }
-        if (cursor.value == value) {
-            // this node with value is head, and no node is before head.
-            return null;
-        }
         boolean found = false;
         while (cursor.next != null) {
             if (cursor.next.value == value) {
@@ -87,9 +78,6 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
     private Node nodeOfValue(int value) {
         Node beforeValue = this.nodeBeforeValue(value);
         if (beforeValue == null) {
-            if (this.head != null && this.head.value == value) {
-                return this.head;
-            }
             return null;
         }
         return beforeValue.next;
@@ -110,32 +98,17 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
         return origin;
     }
 
-    private void addHeader(Node node) {
-        Objects.requireNonNull(node);
-        node.next = head;
-        head = node;
-        this.size++;
-    }
-
-    private void addHeader(int value) {
-        Node node = new Node(value, null);
-        this.addHeader(node);
-    }
-
     @Override
     public void addBefore(int index, int value)
             throws IndexOutOfBoundsException {
         if (index < 0 || index > this.size) {
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
         }
-        if (index == 0) {
-            this.addHeader(value);
-            return;
-        }
-
-        // 1 <= index <= size
-        // 0 <= index - 1 <= size - 1
-        this.addAfter(index - 1, value);
+        Node previous = this.nodeAt(index - 1);
+        assert previous != null : "index checking passed," +
+                " previous should not be null";
+        previous.next = new Node(value, previous.next);
+        this.size++;
     }
 
     @Override
@@ -152,19 +125,11 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
     public int remove(int index) throws IndexOutOfBoundsException {
         this.checkIndex(index);
         Node previous = this.nodeAt(index - 1);
-        Node node;
-        if (previous == null) {
-            assert index == 0 : "only head node has no previous node";
-            node = this.head; //
-            assert node != null : "index checking is passed，" +
-                    "so head node, the node at index 0, must exist.";
-            this.head = node.next;
-        } else {
-            node = previous.next;
-            assert node != null : "index checking is passed," +
-                    " so the node at index " + index + " must exist.";
-            previous.next = node.next;
-        }
+        assert previous != null : "index checking passed," +
+                " previous should not be null";
+        Node node = previous.next;
+        assert node != null : "index checking passed, node should not be null";
+        previous.next = node.next;
         node.next = null; // help GC
         this.size--;
         return node.value;
@@ -182,17 +147,13 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
             this.size--;
             return true;
         }
-        if (this.head != null && this.head.value == value) {
-            remove(0);
-            return true;
-        }
         return false;
     }
 
     @SuppressWarnings("DuplicatedCode")
     @Override
     public int indexOf(int value) {
-        Node cursor = this.head;
+        Node cursor = this.head.next;
         int position = 0;
         boolean found = false;
         while (cursor != null) {
@@ -209,7 +170,7 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
     @SuppressWarnings("DuplicatedCode")
     @Override
     public int lastIndexOf(int value) {
-        Node cursor = this.head;
+        Node cursor = this.head.next;
         int position = 0;
         int lastPosition = -1;
         while (cursor != null) {
@@ -225,7 +186,7 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
     @Override
     public int[] toArray() {
         int[] array = new int[this.size];
-        Node cursor = this.head;
+        Node cursor = this.head.next;
         int index = 0;
         while (cursor != null) {
             array[index] = cursor.value;
@@ -237,7 +198,7 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
 
     @Override
     public void clear() {
-        while (this.head != null) {
+        while (this.head.next != null) {
             this.remove(0);
         }
     }
@@ -257,7 +218,7 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
 
     @Override
     public String toString() {
-        return "NoHeadIntSinglyLinkedList[" +
+        return "HeadingIntSinglyLinkedList[" +
                 Arrays.toString(this.toArray()) + "]";
     }
 }
