@@ -258,6 +258,24 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
         this.head = previous;
     }
 
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
+    @Override
+    public IntList clone() {
+        NoHeadIntSinglyLinkedList clone = new NoHeadIntSinglyLinkedList();
+        Node pointToHead = new Node(0, null);
+        Node cursor = this.head;
+        Node tail = pointToHead;
+        while (cursor != null) {
+            tail.next = new Node(cursor.value, null);
+            tail = tail.next;
+            clone.size++;
+            cursor = cursor.next;
+        }
+        clone.head = pointToHead.next;
+        pointToHead.next = null; // help GC
+        return clone;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

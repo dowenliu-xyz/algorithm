@@ -219,6 +219,21 @@ public class HeadingIntSinglyLinkedList implements IntList, Serializable {
         this.head.next = previous;
     }
 
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
+    @Override
+    public IntList clone() {
+        HeadingIntSinglyLinkedList clone = new HeadingIntSinglyLinkedList();
+        Node cursor = this.head.next;
+        Node tail = clone.head;
+        while (cursor != null) {
+            tail.next = new Node(cursor.value, null);
+            tail = tail.next;
+            clone.size++;
+            cursor = cursor.next;
+        }
+        return clone;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

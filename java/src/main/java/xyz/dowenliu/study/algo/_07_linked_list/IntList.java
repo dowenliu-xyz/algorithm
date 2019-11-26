@@ -7,7 +7,7 @@ package xyz.dowenliu.study.algo._07_linked_list;
  * @author liufl
  * @since version 1.0
  */
-public interface IntList {
+public interface IntList extends Cloneable {
     /**
      * 返回列表包含的值数量
      *
@@ -135,4 +135,10 @@ public interface IntList {
      * 反转列表
      */
     void reverse();
+
+    boolean equals(Object o);
+
+    int hashCode();
+
+    IntList clone();
 }
