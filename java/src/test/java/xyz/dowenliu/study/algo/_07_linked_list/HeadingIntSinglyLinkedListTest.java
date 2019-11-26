@@ -159,6 +159,8 @@ public class HeadingIntSinglyLinkedListTest {
         assertThat(list.toArray()).isEqualTo(new int[]{0, 2, 1, 4, 0});
         assertThat(list.indexOf(1)).isEqualTo(2);
         assertThat(list.lastIndexOf(0)).isEqualTo(4);
+        list.reverse();
+        assertThat(list.toArray()).isEqualTo(new int[]{0, 4, 1, 2, 0});
         list.clear();
         assertThat(list.isEmpty());
     }

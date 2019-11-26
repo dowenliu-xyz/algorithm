@@ -204,6 +204,22 @@ public class HeadingIntSinglyLinkedList implements IntList, Serializable {
     }
 
     @Override
+    public void reverse() {
+        Node previous = null;
+        Node node = this.head.next;
+        Node next = node.next;
+        while (node != null) {
+            node.next = previous;
+            previous = node;
+            node = next;
+            if (next != null) {
+                next = next.next;
+            }
+        }
+        this.head.next = previous;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof IntList)) return false;

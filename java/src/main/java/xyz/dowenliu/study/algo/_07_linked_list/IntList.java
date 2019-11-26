@@ -80,6 +80,7 @@ public interface IntList {
 
     /**
      * 添加值到列表末尾
+     *
      * @param value 要添加的值
      */
     default void addTail(int value) {
@@ -103,11 +104,35 @@ public interface IntList {
      */
     boolean removeBy(int value);
 
+    /**
+     * 查找并返回值第一次出现的位置索引
+     *
+     * @param value 要查找的值
+     * @return 如果列表中有要查找的值，返回第一次出现的位置索引；否则，返回 {@code -1}
+     */
     int indexOf(int value);
 
+    /**
+     * 查找并返回值最后一次出现的位置索引
+     *
+     * @param value 要查找的值
+     * @return 如果列表中有要查找的值，返回最后一次出现的位置索引；否则，返回 {@code -1}
+     */
     int lastIndexOf(int value);
 
+    /**
+     * 返回值等效的数组。其中值的顺序与列表中相同。
+     * @return 等效数组
+     */
     int[] toArray();
 
+    /**
+     * 清空列表
+     */
     void clear();
+
+    /**
+     * 反转列表
+     */
+    void reverse();
 }
