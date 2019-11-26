@@ -11,16 +11,16 @@ import java.util.NoSuchElementException;
  * @author liufl
  * @since version 1.0
  */
-public class DynanicExpandIntArray implements IntArray {
+public class DynamicExpandIntArray implements IntArray {
     private static final int DEFAULT_INITIAL_CAPACITY = 8;
 
     private IntArrayOperator operator;
 
-    public DynanicExpandIntArray() {
+    public DynamicExpandIntArray() {
         this(DEFAULT_INITIAL_CAPACITY);
     }
 
-    public DynanicExpandIntArray(int initialCapacity) {
+    public DynamicExpandIntArray(int initialCapacity) {
         this.operator = new IntArrayOperator(new int[initialCapacity], 0);
     }
 
