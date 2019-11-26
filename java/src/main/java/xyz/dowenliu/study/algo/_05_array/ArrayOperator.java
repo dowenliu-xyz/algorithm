@@ -4,26 +4,26 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 /**
- * Int数组操作封装。
- * <p>create at 2019/11/25</p>
+ * 泛型数组操作封装。
+ * <p>create at 2019/11/26</p>
  *
  * @author liufl
  * @since version 1.0
  */
-class IntArrayOperator implements IntArray {
-    private int[] data;
+class ArrayOperator<E> implements Array<E> {
+    private E[] data;
     private int size;
 
-    public IntArrayOperator(int[] data, int size) {
+    public ArrayOperator(E[] data, int size) {
         this.data = data;
         this.size = size;
     }
 
-    int[] getData() {
+    E[] getData() {
         return data;
     }
 
-    void setData(int[] data) {
+    void setData(E[] data) {
         this.data = data;
     }
 
@@ -42,10 +42,10 @@ class IntArrayOperator implements IntArray {
      * It just throws an UnsupportedOperationException.
      *
      * @see #validateInsertIndex(int)
-     * @see #doInsertAt(int, int)
+     * @see #doInsertAt(int, E)
      */
     @Override
-    public boolean insertAt(int index, int value)
+    public boolean insertAt(int index, E e)
             throws ArrayIndexOutOfBoundsException {
         throw new UnsupportedOperationException();
     }
@@ -56,16 +56,16 @@ class IntArrayOperator implements IntArray {
         }
     }
 
-    boolean doInsertAt(int index, int value) {
+    boolean doInsertAt(int index, E e) {
         System.arraycopy(this.data, index, this.data, index + 1,
                 this.size - index);
-        this.data[index] = value;
+        this.data[index] = e;
         this.size++;
         return true;
     }
 
     @Override
-    public int removeAt(int index)
+    public E removeAt(int index)
             throws NoSuchElementException, ArrayIndexOutOfBoundsException {
         //noinspection DuplicatedCode
         if (index >= this.size) {
@@ -76,7 +76,7 @@ class IntArrayOperator implements IntArray {
             System.arraycopy(data, index + 1, data,
                     index + 1 - 1, this.size - index - 1);
         }
-        this.data[size - 1] = 0;
+        this.data[size - 1] = null;
         this.size--;
         return removed;
     }
@@ -84,39 +84,39 @@ class IntArrayOperator implements IntArray {
     @Override
     public void clear() {
         for (int i = 0; i < this.size; i++) {
-            this.data[i] = 0;
+            this.data[i] = null;
         }
         this.size = 0;
     }
 
     @Override
-    public int get(int index)
+    public E get(int index)
             throws ArrayIndexOutOfBoundsException, NoSuchElementException {
         if (index >= this.size) {
-            throw new NoSuchElementException("No value at index " + index);
+            throw new NoSuchElementException("No element at index " + index);
         }
         return this.data[index];
     }
 
     @Override
-    public int set(int index, int value) throws IndexOutOfBoundsException {
+    public E set(int index, E e) throws IndexOutOfBoundsException {
         if (index >= this.size) {
             throw new IndexOutOfBoundsException(index);
         }
         var replaced = this.data[index];
-        this.data[index] = value;
+        this.data[index] = e;
         return replaced;
     }
 
     @Override
-    public int[] values() {
+    public E[] values() {
         return Arrays.copyOfRange(this.data, 0, this.size);
     }
 
     boolean isEqualsTo(Object o) {
         if (this == o) return true;
-        if (!(o instanceof IntArray)) return false;
-        IntArray array = (IntArray) o;
+        if (!(o instanceof Array)) return false;
+        Array array = (Array) o;
         return Arrays.equals(this.values(), array.values());
     }
 
