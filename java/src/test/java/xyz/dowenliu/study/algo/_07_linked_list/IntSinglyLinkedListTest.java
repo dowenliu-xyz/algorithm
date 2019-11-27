@@ -11,10 +11,10 @@ import static org.assertj.core.api.Assertions.fail;
  * @author liufl
  * @since version 1.0
  */
-public class NoHeadIntSinglyLinkedListTest {
+public class IntSinglyLinkedListTest {
     @Test
     public void test() {
-        NoHeadIntSinglyLinkedList list = new NoHeadIntSinglyLinkedList();
+        IntSinglyLinkedList list = new IntSinglyLinkedList();
         // for empty list
         assertThat(list.size()).isEqualTo(0);
         assertThat(list.isEmpty()).isTrue();
@@ -106,7 +106,7 @@ public class NoHeadIntSinglyLinkedListTest {
         list.addTail(0);
         assertThat(list.size()).isEqualTo(1);
         assertThat(list.get(0)).isEqualTo(0);
-        NoHeadIntSinglyLinkedList.Node node = list.getNode(0);
+        IntSinglyLinkedList.Node node = list.getNode(0);
         assertThat(node.getValue()).isEqualTo(0);
         assertThat(node.getNext()).isNull();
         list.clear();

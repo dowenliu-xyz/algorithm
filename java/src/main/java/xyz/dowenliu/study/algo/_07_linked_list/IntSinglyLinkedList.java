@@ -11,7 +11,7 @@ import java.util.Objects;
  * @author liufl
  * @since version 1.0
  */
-public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
+public class IntSinglyLinkedList implements IntList, Serializable {
     public static class Node implements Serializable {
         private int value;
         private Node next;
@@ -271,7 +271,7 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
 
     @Override
     public IntList clone() {
-        NoHeadIntSinglyLinkedList clone = new NoHeadIntSinglyLinkedList();
+        IntSinglyLinkedList clone = new IntSinglyLinkedList();
         Node pointToHead = new Node(0, null);
         Node cursor = this.head;
         Node tail = pointToHead;
