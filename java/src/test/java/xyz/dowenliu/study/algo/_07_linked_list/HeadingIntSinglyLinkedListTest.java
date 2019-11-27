@@ -163,6 +163,9 @@ public class HeadingIntSinglyLinkedListTest {
         assertThat(list.toArray()).isEqualTo(new int[]{0, 4, 1, 2, 0});
         IntList clone = list.clone();
         assertThat(clone).isEqualTo(list);
+        IntList reversed = list.reversed();
+        assertThat(reversed).isNotSameAs(list);
+        assertThat(reversed.toArray()).isEqualTo(new int[]{0, 2, 1, 4, 0});
         list.clear();
         assertThat(list.isEmpty());
     }

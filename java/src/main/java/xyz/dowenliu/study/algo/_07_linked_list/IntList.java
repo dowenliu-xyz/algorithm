@@ -141,4 +141,14 @@ public interface IntList extends Cloneable {
     int hashCode();
 
     IntList clone();
+
+    /**
+     * 返回一个新列表，其成员顺序与当前列表相反
+     * @return 反序列表
+     */
+    default IntList reversed() {
+        IntList clone = this.clone();
+        clone.reverse();
+        return clone;
+    }
 }
