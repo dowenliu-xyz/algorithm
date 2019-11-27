@@ -3,7 +3,6 @@ package xyz.dowenliu.study.algo._07_linked_list;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -14,11 +13,11 @@ import java.util.Objects;
  * @author liufl
  * @since version 1.0
  */
-public class IntCircularSinglyLinkedList implements IntList, Serializable {
+public class IntCircularSinglyLinkedList implements IntLinkedList {
     /**
      * 链表节点
      */
-    public static class Node implements Serializable {
+    public static class Node implements IntLinkedList.Node {
         private int value;
         @NotNull
         private Node next; // 在循环链表中，next始终不为null
@@ -45,10 +44,12 @@ public class IntCircularSinglyLinkedList implements IntList, Serializable {
             this.next = Objects.requireNonNull(next);
         }
 
+        @Override
         public int getValue() {
             return value;
         }
 
+        @Override
         @NotNull
         public Node getNext() {
             return next;
@@ -106,12 +107,7 @@ public class IntCircularSinglyLinkedList implements IntList, Serializable {
         return "Index: " + index + ", Size: " + this.size;
     }
 
-    /**
-     * 获取索引位置的节点
-     * @param index 索引
-     * @return 索引位置的节点
-     * @throws IndexOutOfBoundsException 索引访问越界
-     */
+    @Override
     @NotNull
     public Node getNode(int index) throws IndexOutOfBoundsException {
         this.checkAccessIndex(index);
@@ -157,11 +153,7 @@ public class IntCircularSinglyLinkedList implements IntList, Serializable {
         return null;
     }
 
-    /**
-     * 查找并返回值第一次出现位置的节点
-     * @param value 要查找的值
-     * @return 如果找到，返回值第一次出现位置的节点；否则，返回 {@code null}
-     */
+    @Override
     @Nullable
     public Node nodeOfValue(int value) {
         Cursor cursor = this.find(cursorAt(0), value);
@@ -346,10 +338,17 @@ public class IntCircularSinglyLinkedList implements IntList, Serializable {
         return Arrays.hashCode(this.toArray());
     }
 
-    @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Override
     public IntList clone() {
-        IntCircularSinglyLinkedList clone = new IntCircularSinglyLinkedList();
+        IntCircularSinglyLinkedList clone;
+        try {
+            clone = (IntCircularSinglyLinkedList) super.clone();
+            clone.head = null;
+            clone.tail = null;
+            clone.size = 0;
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError();
+        }
         Node cursor = this.head;
         while (cursor != null) {
             clone.addTail(cursor.value);
