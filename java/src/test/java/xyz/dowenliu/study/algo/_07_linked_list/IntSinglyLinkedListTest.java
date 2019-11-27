@@ -49,7 +49,7 @@ public class IntSinglyLinkedListTest {
         assertThat(list.lastIndexOf(3)).isEqualTo(-1);
         assertThat(list.toArray()).isEqualTo(new int[0]);
         list.reverse();
-        assertThat(list).isEqualTo(new IntCycleSinglyLinkedList());
+        assertThat(list).isEqualTo(new IntSinglyLinkedList());
         list.addTail(0);
         list.clear();
 
