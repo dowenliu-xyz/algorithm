@@ -271,18 +271,19 @@ public class IntSinglyLinkedList implements IntList, Serializable {
 
     @Override
     public IntList clone() {
-        IntSinglyLinkedList clone = new IntSinglyLinkedList();
-        Node pointToHead = new Node(0, null);
+        IntSinglyLinkedList clone;
+        try {
+            clone = (IntSinglyLinkedList) super.clone();
+            clone.head = null;
+            clone.size = 0;
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(); // should not happen
+        }
         Node cursor = this.head;
-        Node tail = pointToHead;
         while (cursor != null) {
-            tail.next = new Node(cursor.value, null);
-            tail = tail.next;
-            clone.size++;
+            clone.addTail(cursor.value);
             cursor = cursor.next;
         }
-        clone.head = pointToHead.next;
-        pointToHead.next = null; // help GC
         return clone;
     }
 
