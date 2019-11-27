@@ -260,13 +260,6 @@ public class IntSinglyLinkedList implements IntLinkedList {
     }
 
     @Override
-    public void clear() {
-        while (!this.isEmpty()) {
-            this.remove(0);
-        }
-    }
-
-    @Override
     public void reverse() {
         if (this.isEmpty()) {
             return;

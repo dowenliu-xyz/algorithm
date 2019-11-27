@@ -133,7 +133,11 @@ public interface IntList extends Cloneable {
     /**
      * 清空列表
      */
-    void clear();
+    default void clear() {
+        while (!this.isEmpty()) {
+            this.remove(0);
+        }
+    }
 
     /**
      * 反转列表
