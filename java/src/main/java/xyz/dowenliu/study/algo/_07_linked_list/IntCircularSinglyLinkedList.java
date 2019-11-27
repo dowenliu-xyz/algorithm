@@ -14,7 +14,7 @@ import java.util.Objects;
  * @author liufl
  * @since version 1.0
  */
-public class IntOneWayCircularLinkedList implements IntList, Serializable {
+public class IntCircularSinglyLinkedList implements IntList, Serializable {
     /**
      * 链表节点
      */
@@ -349,7 +349,7 @@ public class IntOneWayCircularLinkedList implements IntList, Serializable {
     @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Override
     public IntList clone() {
-        IntOneWayCircularLinkedList clone = new IntOneWayCircularLinkedList();
+        IntCircularSinglyLinkedList clone = new IntCircularSinglyLinkedList();
         Node cursor = this.head;
         while (cursor != null) {
             clone.addTail(cursor.value);

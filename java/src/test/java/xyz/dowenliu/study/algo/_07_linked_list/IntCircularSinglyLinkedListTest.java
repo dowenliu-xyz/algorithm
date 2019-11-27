@@ -11,10 +11,10 @@ import static org.assertj.core.api.Assertions.fail;
  * @author liufl
  * @since version 1.0
  */
-public class IntOneWayCircularLinkedListTest {
+public class IntCircularSinglyLinkedListTest {
     @Test
     public void test() {
-        IntOneWayCircularLinkedList list = new IntOneWayCircularLinkedList();
+        IntCircularSinglyLinkedList list = new IntCircularSinglyLinkedList();
         // for empty list
         assertThat(list.size()).isEqualTo(0);
         assertThat(list.isEmpty()).isTrue();
@@ -49,7 +49,7 @@ public class IntOneWayCircularLinkedListTest {
         assertThat(list.lastIndexOf(3)).isEqualTo(-1);
         assertThat(list.toArray()).isEqualTo(new int[0]);
         list.reverse();
-        assertThat(list).isEqualTo(new IntOneWayCircularLinkedList());
+        assertThat(list).isEqualTo(new IntCircularSinglyLinkedList());
         list.addTail(0);
         list.clear();
 
@@ -106,7 +106,7 @@ public class IntOneWayCircularLinkedListTest {
         list.addTail(0);
         assertThat(list.size()).isEqualTo(1);
         assertThat(list.get(0)).isEqualTo(0);
-        IntOneWayCircularLinkedList.Node node = list.getNode(0);
+        IntCircularSinglyLinkedList.Node node = list.getNode(0);
         assertThat(node.getValue()).isEqualTo(0);
         assertThat(node.getNext()).isSameAs(node);
         list.clear();
