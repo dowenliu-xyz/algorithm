@@ -47,4 +47,9 @@ public interface IntLinkedList extends IntList {
      */
     @Nullable
     Node nodeOfValue(int value);
+
+    @Override
+    default boolean contains(int value) {
+        return this.nodeOfValue(value) != null;
+    }
 }

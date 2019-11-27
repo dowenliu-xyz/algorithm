@@ -163,11 +163,6 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
     }
 
     @Override
-    public boolean contains(int value) {
-        return this.nodeOfValue(value) != null;
-    }
-
-    @Override
     public int set(int index, int value) throws IndexOutOfBoundsException {
         Node node = this.getNode(index);
         int origin = node.value;

@@ -34,13 +34,13 @@ public class IntSinglyLinkedList implements IntLinkedList {
 
         @Override
         public int getValue() {
-            return value;
+            return this.value;
         }
 
         @Override
         @Nullable
         public Node getNext() {
-            return next;
+            return this.next;
         }
     }
 
@@ -63,7 +63,7 @@ public class IntSinglyLinkedList implements IntLinkedList {
 
         @Nullable
         public Cursor next() {
-            if (node == null) {
+            if (this.node == null) {
                 return null;
             }
             return new Cursor(this.node, this.node.next, this.position + 1);
@@ -103,6 +103,7 @@ public class IntSinglyLinkedList implements IntLinkedList {
      * {@code index } 大于等于 {@link #size()} ，返回 {@code null} ；
      * 否则，返回索引位置的游标
      */
+    @SuppressWarnings("DuplicatedCode")
     @Nullable
     private Cursor cursorAt(int index) {
         if (index < 0 || index > this.size) {
@@ -125,7 +126,7 @@ public class IntSinglyLinkedList implements IntLinkedList {
         assert cursor != null : "index 已通过检查，游标不可能是 null";
         Node node = cursor.node;
         assert node != null : "index 已通过检查，节点不可能是 null";
-        return cursor.node;
+        return node;
     }
 
     @Override
@@ -149,11 +150,6 @@ public class IntSinglyLinkedList implements IntLinkedList {
     public Node nodeOfValue(int value) {
         Cursor cursor = this.find(this.cursorAt(0), value);
         return cursor == null ? null : cursor.node;
-    }
-
-    @Override
-    public boolean contains(int value) {
-        return this.nodeOfValue(value) != null;
     }
 
     @Override
