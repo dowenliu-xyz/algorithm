@@ -40,6 +40,11 @@ public interface IntLinkedList extends IntList {
     @NotNull
     Node getNode(int index) throws IndexOutOfBoundsException;
 
+    @Override
+    default int get(int index) throws IndexOutOfBoundsException {
+        return this.getNode(index).getValue();
+    }
+
     /**
      * 查找并返回值第一次出现位置的节点
      * @param value 要查找的值

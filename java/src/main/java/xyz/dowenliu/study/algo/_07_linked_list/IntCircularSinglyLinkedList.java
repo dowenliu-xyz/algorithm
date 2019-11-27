@@ -139,11 +139,6 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
         return cursor.node;
     }
 
-    @Override
-    public int get(int index) throws IndexOutOfBoundsException {
-        return this.getNode(index).value;
-    }
-
     @Nullable
     private Cursor find(@Nullable Cursor cursor, int value) {
         while (cursor != null && cursor.position < this.size) {
