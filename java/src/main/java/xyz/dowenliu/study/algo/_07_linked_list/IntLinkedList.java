@@ -29,6 +29,12 @@ public interface IntLinkedList extends IntList {
         Node getNext();
     }
 
+    /**
+     * 返回头节点
+     * @return 头节点
+     */
+    @Nullable
+    Node getFirstNode();
 
     /**
      * 获取索引位置的节点
@@ -56,5 +62,18 @@ public interface IntLinkedList extends IntList {
     @Override
     default boolean contains(int value) {
         return this.nodeOfValue(value) != null;
+    }
+
+    @Override
+    default int[] toArray() {
+        int[] array = new int[this.size()];
+        Node cursor = this.getFirstNode();
+        int position = 0;
+        while (position < this.size() && cursor != null) {
+            array[position] = cursor.getValue();
+            cursor = cursor.getNext();
+            position++;
+        }
+        return array;
     }
 }

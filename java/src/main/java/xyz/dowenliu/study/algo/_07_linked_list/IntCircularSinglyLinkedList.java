@@ -90,6 +90,11 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
         return this.size;
     }
 
+    @Override
+    public @Nullable Node getFirstNode() {
+        return this.head;
+    }
+
     private void checkAccessIndex(int index) {
         if (index < 0 || index >= this.size) {
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
@@ -277,20 +282,6 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
             }
         }
         return lastPosition;
-    }
-
-    @SuppressWarnings("DuplicatedCode")
-    @Override
-    public int[] toArray() {
-        int[] array = new int[this.size];
-        Node cursor = this.head;
-        int position = 0;
-        while (position < this.size && cursor != null) {
-            array[position] = cursor.value;
-            cursor = cursor.next;
-            position++;
-        }
-        return array;
     }
 
     @Override

@@ -79,6 +79,11 @@ public class IntSinglyLinkedList implements IntLinkedList {
         return this.size;
     }
 
+    @Override
+    public @Nullable Node getFirstNode() {
+        return this.head;
+    }
+
     private void checkAccessIndex(int index) {
         if (index < 0 || index >= this.size) {
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
@@ -192,11 +197,11 @@ public class IntSinglyLinkedList implements IntLinkedList {
 
     @Nullable
     private Node removeByCursor(@NotNull Cursor cursor) {
-        Node previous = cursor.previous;
         Node node = cursor.node;
         if (node == null) {
             return null; // nothing to remove here
         }
+        Node previous = cursor.previous;
         Node next = node.next;
         if (previous == null) {
             // 删除的是头节点
@@ -209,6 +214,7 @@ public class IntSinglyLinkedList implements IntLinkedList {
         return node;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public int remove(int index) throws IndexOutOfBoundsException {
         this.checkAccessIndex(index);
@@ -253,20 +259,6 @@ public class IntSinglyLinkedList implements IntLinkedList {
         return lastPosition;
     }
 
-    @SuppressWarnings("DuplicatedCode")
-    @Override
-    public int[] toArray() {
-        int[] array = new int[this.size];
-        Node cursor = this.head;
-        int position = 0;
-        while (position < this.size && cursor != null) {
-            array[position] = cursor.value;
-            cursor = cursor.next;
-            position++;
-        }
-        return array;
-    }
-
     @Override
     public void clear() {
         while (!this.isEmpty()) {
@@ -279,19 +271,22 @@ public class IntSinglyLinkedList implements IntLinkedList {
         if (this.isEmpty()) {
             return;
         }
-        Node pre = null;
+        Node previous = null;
         Node node = this.head;
         assert node != null : "链表不为空，头节点不可能是 null";
         Node next = node.next;
-        while (node != null) {
-            node.next = pre;
-            pre = node;
+        int position = 0;
+        while (position < this.size) {
+            assert node != null : "索引未越界，node 不能为 null";
+            node.next = previous;
+            previous = node;
             node = next;
             if (next != null) {
                 next = next.next;
             }
+            position++;
         }
-        this.head = pre;
+        this.head = previous;
     }
 
     @Override
@@ -327,7 +322,6 @@ public class IntSinglyLinkedList implements IntLinkedList {
 
     @Override
     public String toString() {
-        return "NoHeadIntSinglyLinkedList[" +
-                Arrays.toString(this.toArray()) + "]";
+        return "NoHeadIntSinglyLinkedList" + Arrays.toString(this.toArray());
     }
 }
