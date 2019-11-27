@@ -12,13 +12,21 @@ import java.util.Objects;
  * @since version 1.0
  */
 public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
-    private static class Node implements Serializable {
-        int value;
-        Node next;
+    public static class Node implements Serializable {
+        private int value;
+        private Node next;
 
-        public Node(int value, Node next) {
+        private Node(int value, Node next) {
             this.value = value;
             this.next = next;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public Node getNext() {
+            return next;
         }
     }
 
@@ -54,15 +62,18 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
         return "Index: " + index + ", Size: " + this.size;
     }
 
-    @Override
-    public int get(int index) throws IndexOutOfBoundsException {
+    public Node getNode(int index) throws IndexOutOfBoundsException {
         this.checkIndex(index);
         Node node = this.nodeAt(index);
         assert node != null : "index checking passed, node should not be null";
-        return node.value;
+        return node;
     }
 
-    @SuppressWarnings("DuplicatedCode")
+    @Override
+    public int get(int index) throws IndexOutOfBoundsException {
+       return this.getNode(index).value;
+    }
+
     private Node nodeBeforeValue(int value) {
         Node cursor = this.head;
         if (cursor == null) {
@@ -170,7 +181,6 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
         return node.value;
     }
 
-    @SuppressWarnings("DuplicatedCode")
     @Override
     public boolean removeBy(int value) {
         Node previous = this.nodeBeforeValue(value);
@@ -189,7 +199,6 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
         return false;
     }
 
-    @SuppressWarnings("DuplicatedCode")
     @Override
     public int indexOf(int value) {
         Node cursor = this.head;
@@ -206,7 +215,6 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
         return found ? position : -1;
     }
 
-    @SuppressWarnings("DuplicatedCode")
     @Override
     public int lastIndexOf(int value) {
         Node cursor = this.head;
@@ -244,6 +252,9 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
 
     @Override
     public void reverse() {
+        if (this.isEmpty()) {
+            return;
+        }
         Node previous = null;
         Node node = this.head;
         Node next = node.next;
@@ -258,7 +269,6 @@ public class NoHeadIntSinglyLinkedList implements IntList, Serializable {
         this.head = previous;
     }
 
-    @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Override
     public IntList clone() {
         NoHeadIntSinglyLinkedList clone = new NoHeadIntSinglyLinkedList();

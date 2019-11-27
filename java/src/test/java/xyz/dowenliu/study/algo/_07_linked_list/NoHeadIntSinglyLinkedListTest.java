@@ -3,7 +3,7 @@ package xyz.dowenliu.study.algo._07_linked_list;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.fail;
+import static org.assertj.core.api.Assertions.fail;
 
 /**
  * <p>create at 2019/11/26</p>
@@ -14,7 +14,7 @@ import static org.junit.Assert.fail;
 public class NoHeadIntSinglyLinkedListTest {
     @Test
     public void test() {
-        IntList list = new NoHeadIntSinglyLinkedList();
+        NoHeadIntSinglyLinkedList list = new NoHeadIntSinglyLinkedList();
         // for empty list
         assertThat(list.size()).isEqualTo(0);
         assertThat(list.isEmpty()).isTrue();
@@ -48,6 +48,9 @@ public class NoHeadIntSinglyLinkedListTest {
         assertThat(list.indexOf(3)).isEqualTo(-1);
         assertThat(list.lastIndexOf(3)).isEqualTo(-1);
         assertThat(list.toArray()).isEqualTo(new int[0]);
+        list.reverse();
+        assertThat(list).isEqualTo(new IntCycleSinglyLinkedList());
+        list.addTail(0);
         list.clear();
 
         list.addHead(0);
@@ -99,6 +102,14 @@ public class NoHeadIntSinglyLinkedListTest {
         assertThat(list.toArray()).isEqualTo(new int[]{0, 1});
         list.clear();
         assertThat(list.isEmpty());
+
+        list.addTail(0);
+        assertThat(list.size()).isEqualTo(1);
+        assertThat(list.get(0)).isEqualTo(0);
+        NoHeadIntSinglyLinkedList.Node node = list.getNode(0);
+        assertThat(node.getValue()).isEqualTo(0);
+        assertThat(node.getNext()).isNull();
+        list.clear();
 
         // list having more values
         list.addBefore(0, 0);
