@@ -84,6 +84,10 @@ public interface IntList extends Cloneable {
      * @param value 要添加的值
      */
     default void addTail(int value) {
+        if (this.isEmpty()) {
+            this.addHead(value);
+            return;
+        }
         this.addAfter(this.size() - 1, value);
     }
 
