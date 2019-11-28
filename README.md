@@ -90,3 +90,7 @@
 * 模拟浏览器的前进后退
     * Java实现
         * [使用双栈结构模拟浏览器前进后退](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/SimpleBrowser.java)
+* 有效的括号
+    * [LeetCode#20](https://leetcode-cn.com/problems/valid-parentheses/)
+        * [提交](https://leetcode-cn.com/submissions/detail/38268503/)
+        使用了线性栈。时间复杂度 O(n)；空间复杂度 O(n)
