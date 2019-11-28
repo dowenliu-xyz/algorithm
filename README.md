@@ -94,3 +94,7 @@
     * [LeetCode#20](https://leetcode-cn.com/problems/valid-parentheses/)
         * [提交](https://leetcode-cn.com/submissions/detail/38268503/)
         使用了线性栈。时间复杂度 O(n)；空间复杂度 O(n)
+* 最小栈
+    * [LeetCode#155](https://leetcode-cn.com/problems/min-stack/)
+        * [提交](https://leetcode-cn.com/submissions/detail/38274598/)
+        使用链式栈。每个节点上存储节点值和节点存入时的栈最小值。时间复杂度 O(1)；空间复杂度 O(n)
