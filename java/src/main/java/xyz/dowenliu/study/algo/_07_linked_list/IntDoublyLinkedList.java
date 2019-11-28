@@ -6,30 +6,34 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 
 /**
- * {@code int} 单链表
- * <p>create at 2019/11/26</p>
+ * {@code int} 双向链表
+ * <p>create at 2019/11/27</p>
  *
  * @author liufl
  * @since version 1.0
  */
-public class IntSinglyLinkedList implements IntLinkedList {
+public class IntDoublyLinkedList implements IntLinkedList {
     /**
-     * 链表节点
+     * 双向链表节点
      */
     public static class Node implements IntLinkedList.Node {
         private int value;
         @Nullable
         private Node next;
+        @Nullable
+        private Node previous;
 
         /**
-         * 创建节点
+         * 构建节点
          *
-         * @param value 节点值
-         * @param next  后续节点
+         * @param value    节点存储的值
+         * @param next     后续节点
+         * @param previous 前续节点
          */
-        private Node(int value, @Nullable Node next) {
+        public Node(int value, @Nullable Node next, @Nullable Node previous) {
             this.value = value;
             this.next = next;
+            this.previous = previous;
         }
 
         @Override
@@ -42,6 +46,16 @@ public class IntSinglyLinkedList implements IntLinkedList {
         public Node getNext() {
             return this.next;
         }
+
+        /**
+         * 返回节点的前续节点
+         *
+         * @return 节点的前续节点。如果不存在，返回 {@code null}
+         */
+        @Nullable
+        public Node getPrevious() {
+            return this.previous;
+        }
     }
 
     /**
@@ -52,12 +66,15 @@ public class IntSinglyLinkedList implements IntLinkedList {
         final Node previous;
         @Nullable
         final Node node;
+        @Nullable
+        final Node next;
         final int position;
 
         public Cursor(@Nullable Node previous, @Nullable Node node,
-                      int position) {
+                      @Nullable Node next, int position) {
             this.previous = previous;
             this.node = node;
+            this.next = next;
             this.position = position;
         }
 
@@ -66,12 +83,25 @@ public class IntSinglyLinkedList implements IntLinkedList {
             if (this.node == null) {
                 return null;
             }
-            return new Cursor(this.node, this.node.next, this.position + 1);
+            return new Cursor(this.node, this.node.next,
+                    this.next == null ? null : this.next.next,
+                    this.position + 1);
+        }
+
+        @Nullable
+        public Cursor previous() {
+            if (previous == null) {
+                return null;
+            }
+            return new Cursor(this.previous.previous, this.previous,
+                    this.node, this.position - 1);
         }
     }
 
     @Nullable
     private Node head;
+    @Nullable
+    private Node tail;
     private int size;
 
     @Override
@@ -114,9 +144,25 @@ public class IntSinglyLinkedList implements IntLinkedList {
         if (index < 0 || index > this.size) {
             return null;
         }
-        Cursor cursor = new Cursor(null, this.head, 0);
+        if (index == this.size) {
+            return new Cursor(this.tail, null, null, this.size);
+        }
+        boolean forward = index <= this.size / 2;
+        Cursor cursor = forward ?
+                new Cursor(
+                        null,
+                        this.head,
+                        this.head == null ? null : this.head.next,
+                        0
+                ) :
+                new Cursor(
+                        this.tail == null ? null : this.tail.previous,
+                        this.tail,
+                        null,
+                        this.size - 1
+                );
         while (cursor != null && cursor.position != index) {
-            cursor = cursor.next();
+            cursor = forward ? cursor.next() : cursor.previous();
         }
         return cursor;
     }
@@ -125,8 +171,8 @@ public class IntSinglyLinkedList implements IntLinkedList {
     @NotNull
     public Node getNode(int index) throws IndexOutOfBoundsException {
         this.checkAccessIndex(index);
-        assert this.size != 0 && this.head != null :
-                "index 已通过检查，则 size 至少为1，头节点不为空";
+        assert this.size != 0 && this.head != null && this.tail != null :
+                "index 已通过检查，则 size 至少为 1 ，头尾节点不为空";
         Cursor cursor = this.cursorAt(index);
         assert cursor != null : "index 已通过检查，游标不可能是 null";
         Node node = cursor.node;
@@ -135,12 +181,12 @@ public class IntSinglyLinkedList implements IntLinkedList {
     }
 
     @Nullable
-    private Cursor find(@Nullable Cursor cursor, int value) {
+    private Cursor find(@Nullable Cursor cursor, int value, boolean forward) {
         while (cursor != null && cursor.node != null) {
             if (cursor.node.value == value) {
                 return cursor;
             }
-            cursor = cursor.next();
+            cursor = forward ? cursor.next() : cursor.previous();
         }
         return null;
     }
@@ -148,7 +194,7 @@ public class IntSinglyLinkedList implements IntLinkedList {
     @Override
     @Nullable
     public Node nodeOfValue(int value) {
-        Cursor cursor = this.find(this.cursorAt(0), value);
+        Cursor cursor = this.find(this.cursorAt(0), value, true);
         return cursor == null ? null : cursor.node;
     }
 
@@ -164,21 +210,22 @@ public class IntSinglyLinkedList implements IntLinkedList {
     public void addBefore(int index, int value)
             throws IndexOutOfBoundsException {
         this.checkInsertIndex(index);
-        if (this.isEmpty()) {
-            this.head = new Node(value, null);
-        } else {
-            Cursor cursor = this.cursorAt(index);
-            assert cursor != null : "链表非空，index 合法，游标必定不是 null";
-            Node next = cursor.node;
-            Node node = new Node(value, next);
-            Node previous = cursor.previous;
-            if (previous != null) {
-                previous.next = node;
-            }
-            // 新增节点之后存在其他节点，所以新增的肯定不会是尾节点，但可能是头节点
-            if (next == this.head) { // 更新头节点
-                this.head = node;
-            }
+        Cursor cursor = this.cursorAt(index);
+        assert cursor != null : "链表非空，index 合法，游标必定不是 null";
+        Node next = cursor.node;
+        Node previous = cursor.previous;
+        Node node = new Node(value, next, previous);
+        if (previous != null) {
+            previous.next = node;
+        }
+        if (index == 0) {
+            this.head = node;
+        }
+        if (next != null) {
+            next.previous = node;
+        }
+        if (index == this.size) {
+            this.tail = node;
         }
         this.size++;
     }
@@ -189,9 +236,13 @@ public class IntSinglyLinkedList implements IntLinkedList {
         this.checkAccessIndex(index);
         Cursor cursor = this.cursorAt(index);
         assert cursor != null : "index检查已通过，链表必定不为空，游标不可能为 null";
-        assert cursor.node != null : "index 已通过检查，节点不可能是 null";
-        Node nextNext = cursor.node.next;
-        cursor.node.next = new Node(value, nextNext);
+        Node previous = cursor.node;
+        assert previous != null : "index 已通过检查，节点不可能是 null";
+        Node node = new Node(value, previous.next, previous);
+        previous.next = node;
+        if (index == this.size - 1) {
+            this.tail = node;
+        }
         this.size++;
     }
 
@@ -202,12 +253,18 @@ public class IntSinglyLinkedList implements IntLinkedList {
             return null; // nothing to remove here
         }
         Node previous = cursor.previous;
-        Node next = node.next;
-        if (previous == null) {
-            // 删除的是头节点
-            this.head = next;
-        } else {
+        Node next = cursor.next;
+        if (previous != null) {
             previous.next = next;
+        }
+        if (cursor.position == 0) {
+            this.head = next;
+        }
+        if (next != null) {
+            next.previous = previous;
+        }
+        if (cursor.position == this.size - 1) {
+            this.tail = previous;
         }
         node.next = null; // help GC
         this.size--;
@@ -227,7 +284,7 @@ public class IntSinglyLinkedList implements IntLinkedList {
 
     @Override
     public boolean removeBy(int value) {
-        Cursor cursor = this.find(this.cursorAt(0), value);
+        Cursor cursor = this.find(this.cursorAt(0), value, true);
         if (cursor == null) {
             return false;
         }
@@ -237,26 +294,20 @@ public class IntSinglyLinkedList implements IntLinkedList {
 
     @Override
     public int indexOf(int value) {
-        Cursor cursor = this.find(this.cursorAt(0), value);
+        Cursor cursor = this.find(this.cursorAt(0), value, true);
         if (cursor == null) {
             return -1;
         }
         return cursor.position;
     }
 
-    @SuppressWarnings("DuplicatedCode")
     @Override
     public int lastIndexOf(int value) {
-        Cursor cursor = this.cursorAt(0);
-        int lastPosition = -1;
-        while (cursor != null) {
-            cursor = this.find(cursor, value);
-            if (cursor != null) {
-                lastPosition = cursor.position;
-                cursor = cursor.next();
-            }
+        Cursor cursor = this.find(this.cursorAt(this.size - 1), value, false);
+        if (cursor == null) {
+            return -1;
         }
-        return lastPosition;
+        return cursor.position;
     }
 
     @SuppressWarnings("DuplicatedCode")
@@ -273,6 +324,7 @@ public class IntSinglyLinkedList implements IntLinkedList {
         while (position < this.size) {
             assert node != null : "索引未越界，node 不能为 null";
             node.next = previous;
+            node.previous = next;
             previous = node;
             node = next;
             if (next != null) {
@@ -280,7 +332,9 @@ public class IntSinglyLinkedList implements IntLinkedList {
             }
             position++;
         }
+        Node temp = this.head;
         this.head = previous;
+        this.tail = temp;
     }
 
     @Override
@@ -298,24 +352,27 @@ public class IntSinglyLinkedList implements IntLinkedList {
 
     @Override
     public IntList clone() {
-        IntSinglyLinkedList clone;
+        IntDoublyLinkedList clone;
         try {
-            clone = (IntSinglyLinkedList) super.clone();
+            clone = (IntDoublyLinkedList) super.clone();
             clone.head = null;
+            clone.tail = null;
             clone.size = 0;
         } catch (CloneNotSupportedException e) {
             throw new InternalError(); // should not happen
         }
         Node cursor = this.head;
-        while (cursor != null) {
+        int position = 0;
+        while (cursor != null && position < this.size) {
             clone.addTail(cursor.value);
             cursor = cursor.next;
+            position++;
         }
         return clone;
     }
 
     @Override
     public String toString() {
-        return "NoHeadIntSinglyLinkedList" + Arrays.toString(this.toArray());
+        return "IntDoublyLinkedList" + Arrays.toString(this.toArray());
     }
 }
