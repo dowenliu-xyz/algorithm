@@ -79,7 +79,9 @@
 ## 栈
 * 实现栈结构
     * Java实现
-        * [基于数组的int栈](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/IntArrayStack.java)
+        * [基于数组的线性int栈](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/IntArrayStack.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_08_stack/IntArrayStackTest.java)
-        * [自动扩容数组int栈](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/DynamicExpandIntArrayStack.java)
+        * [自动扩容数组线性int栈](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/DynamicExpandIntArrayStack.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_08_stack/DynamicExpandIntArrayStackTest.java)
+        * [基于单链表的链式int栈](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/IntLinkedStack.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_08_stack/IntLinkedStackTest.java)
