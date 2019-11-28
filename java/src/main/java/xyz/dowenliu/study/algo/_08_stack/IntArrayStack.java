@@ -60,6 +60,11 @@ public class IntArrayStack implements IntStack {
     }
 
     @Override
+    public void clear() {
+        this.position = -1;
+    }
+
+    @Override
     public String toString() {
         if (this.isEmpty()) {
             return "IntArrayStack[empty][capacity:" + this.data.length + "]";

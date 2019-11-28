@@ -37,4 +37,9 @@ public interface IntStack {
      * @throws NoSuchElementException 如果栈是空的
      */
     int pop() throws NoSuchElementException;
+
+    /**
+     * 清空栈
+     */
+    void clear();
 }

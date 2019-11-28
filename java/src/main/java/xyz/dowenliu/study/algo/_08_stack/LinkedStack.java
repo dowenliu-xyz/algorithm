@@ -65,6 +65,11 @@ public class LinkedStack<E> implements Stack<E> {
     }
 
     @Override
+    public void clear() {
+        this.top = null;
+    }
+
+    @Override
     public String toString() {
         return "LinedStack[" +
                 (this.top == null ? "" : this.top.toString()) +

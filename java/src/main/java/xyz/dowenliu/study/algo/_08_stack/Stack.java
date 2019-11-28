@@ -38,4 +38,9 @@ public interface Stack<E> {
      * @throws NoSuchElementException 如果栈是空的
      */
     E pop() throws NoSuchElementException;
+
+    /**
+     * 清空栈
+     */
+    void clear();
 }

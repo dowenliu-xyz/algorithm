@@ -67,6 +67,11 @@ public class IntLinkedStack implements IntStack {
     }
 
     @Override
+    public void clear() {
+        this.top = null;
+    }
+
+    @Override
     public String toString() {
         return "IntLinkedStack[" +
                 (this.top == null ? "" : this.top.toString()) +
