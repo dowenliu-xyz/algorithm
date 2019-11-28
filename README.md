@@ -87,3 +87,6 @@
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_08_stack/IntLinkedStackTest.java)
         * [基于单链表的链式泛型栈](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/LinkedStack.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_08_stack/LinkedStackTest.java)
+* 模拟浏览器的前进后退
+    * Java实现
+        * [使用双栈结构模拟浏览器前进后退](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/SimpleBrowser.java)
