@@ -207,6 +207,7 @@ public class IntDoublyLinkedList implements IntLinkedList {
         return origin;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public void addBefore(int index, int value)
             throws IndexOutOfBoundsException {
@@ -238,7 +239,7 @@ public class IntDoublyLinkedList implements IntLinkedList {
         Cursor cursor = this.cursorAt(index);
         assert cursor != null : "index检查已通过，链表必定不为空，游标不可能为 null";
         Node previous = cursor.node;
-        assert previous != null : "index 已通过检查，节点不可能是 null";
+        assert previous != null : "index检查已通过，节点不可能是 null";
         Node node = new Node(value, previous.next, previous);
         previous.next = node;
         if (index == this.size - 1) {
@@ -278,9 +279,9 @@ public class IntDoublyLinkedList implements IntLinkedList {
     public int remove(int index) throws IndexOutOfBoundsException {
         this.checkAccessIndex(index);
         Cursor cursor = this.cursorAt(index);
-        assert cursor != null : "index 已通过检查，游标不可能是 null";
+        assert cursor != null : "index检查已通过，游标不可能是 null";
         Node removed = this.removeByCursor(cursor);
-        assert removed != null : "index 已通过检查，要删除的节点不可能是 null";
+        assert removed != null : "index检查已通过，要删除的节点不可能是 null";
         return removed.value;
     }
 

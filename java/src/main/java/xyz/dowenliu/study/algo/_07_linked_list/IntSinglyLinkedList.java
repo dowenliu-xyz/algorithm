@@ -176,12 +176,13 @@ public class IntSinglyLinkedList implements IntLinkedList {
         return origin;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public void addBefore(int index, int value)
             throws IndexOutOfBoundsException {
         this.checkInsertIndex(index);
         Cursor cursor = this.cursorAt(index);
-        assert cursor != null;
+        assert cursor != null : "链表非空，index 合法，游标必定不是 null";
         Node next = cursor.node;
         Node previous = cursor.previous;
         Node node = new Node(value, next);
@@ -197,6 +198,7 @@ public class IntSinglyLinkedList implements IntLinkedList {
         this.size++;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public void addAfter(int index, int value)
             throws IndexOutOfBoundsException {
@@ -206,13 +208,14 @@ public class IntSinglyLinkedList implements IntLinkedList {
             assert this.tail != null : "索引指向尾节点，尾节点不应为 null";
             this.tail.next = node;
             this.tail = node;
-        } else {
-            Cursor cursor = this.cursorAt(index);
-            assert cursor != null : "index检查已通过，链表必定不为空，游标不可能为 null";
-            Node previous = cursor.node;
-            assert previous != null : "index 已通过检查，节点不可能是 null";
-            previous.next = new Node(value, previous.next);
+            this.size++;
+            return;
         }
+        Cursor cursor = this.cursorAt(index);
+        assert cursor != null : "index检查已通过，链表必定不为空，游标不可能为 null";
+        Node previous = cursor.node;
+        assert previous != null : "index检查已通过，节点不可能为 null";
+        previous.next = new Node(value, previous.next);
         this.size++;
     }
 
@@ -244,9 +247,9 @@ public class IntSinglyLinkedList implements IntLinkedList {
     public int remove(int index) throws IndexOutOfBoundsException {
         this.checkAccessIndex(index);
         Cursor cursor = this.cursorAt(index);
-        assert cursor != null : "index 已通过检查，游标不可能是 null";
+        assert cursor != null : "index检查已通过，游标不可能是 null";
         Node removed = this.removeByCursor(cursor);
-        assert removed != null : "index 已通过检查，要删除的节点不可能是 null";
+        assert removed != null : "index检查已通过，要删除的节点不可能是 null";
         return removed.value;
     }
 
