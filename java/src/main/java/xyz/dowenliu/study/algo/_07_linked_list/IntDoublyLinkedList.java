@@ -30,7 +30,7 @@ public class IntDoublyLinkedList implements IntLinkedList {
          * @param next     后续节点
          * @param previous 前续节点
          */
-        public Node(int value, @Nullable Node next, @Nullable Node previous) {
+        private Node(int value, @Nullable Node next, @Nullable Node previous) {
             this.value = value;
             this.next = next;
             this.previous = previous;
@@ -167,6 +167,7 @@ public class IntDoublyLinkedList implements IntLinkedList {
         return cursor;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     @NotNull
     public Node getNode(int index) throws IndexOutOfBoundsException {
@@ -246,6 +247,7 @@ public class IntDoublyLinkedList implements IntLinkedList {
         this.size++;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     @Nullable
     private Node removeByCursor(@NotNull Cursor cursor) {
         Node node = cursor.node;
@@ -350,6 +352,7 @@ public class IntDoublyLinkedList implements IntLinkedList {
         return Arrays.hashCode(this.toArray());
     }
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public IntList clone() {
         IntDoublyLinkedList clone;
