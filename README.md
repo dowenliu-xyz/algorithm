@@ -76,3 +76,8 @@
     * [LeetCode#876](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
         * [提交](https://leetcode-cn.com/submissions/detail/38225643/)
         快慢指针法。时间复杂度 O(n)；空间复杂度 O(1)
+## 栈
+* 实现栈结构
+    * Java实现
+        * [基于数组的int栈](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/IntArrayStack.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_08_stack/IntArrayStackTest.java)
