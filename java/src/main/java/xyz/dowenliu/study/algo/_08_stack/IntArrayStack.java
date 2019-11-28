@@ -11,10 +11,18 @@ import java.util.NoSuchElementException;
  * @since version 1.0
  */
 public class IntArrayStack implements IntStack {
-    private int[] data;
-    private int position = -1;
+    protected int[] data;
+    protected int position = -1;
 
+    /**
+     * 构造一个指定容量的线性 {@code int} 栈
+     * @param capacity 容量。需要大于0
+     * @throws IllegalArgumentException 如果容量参数小于等于 {@code 0}
+     */
     public IntArrayStack(int capacity) {
+        if (capacity <= 0) {
+            throw new IllegalArgumentException("容量应大于0");
+        }
         this.data = new int[capacity];
     }
 
