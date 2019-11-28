@@ -112,7 +112,7 @@ public class IntSinglyLinkedList implements IntLinkedList {
      *
      * @param index 索引
      * @return 如果 {@code index} 小于 {@code 0} 或者
-     * {@code index } 大于等于 {@link #size()} ，返回 {@code null} ；
+     * {@code index} 大于等于 {@link #size()} ，返回 {@code null} ；
      * 否则，返回索引位置的游标
      */
     @SuppressWarnings("DuplicatedCode")

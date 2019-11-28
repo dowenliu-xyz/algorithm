@@ -90,7 +90,7 @@ public class IntDoublyLinkedList implements IntLinkedList {
 
         @Nullable
         public Cursor previous() {
-            if (previous == null) {
+            if (this.previous == null) {
                 return null;
             }
             return new Cursor(this.previous.previous, this.previous,
@@ -135,7 +135,7 @@ public class IntDoublyLinkedList implements IntLinkedList {
      *
      * @param index 索引
      * @return 如果 {@code index} 小于 {@code 0} 或者
-     * {@code index } 大于等于 {@link #size()} ，返回 {@code null} ；
+     * {@code index} 大于等于 {@link #size()} ，返回 {@code null} ；
      * 否则，返回索引位置的游标
      */
     @SuppressWarnings("DuplicatedCode")
@@ -239,7 +239,7 @@ public class IntDoublyLinkedList implements IntLinkedList {
         Cursor cursor = this.cursorAt(index);
         assert cursor != null : "index检查已通过，链表必定不为空，游标不可能为 null";
         Node previous = cursor.node;
-        assert previous != null : "index检查已通过，节点不可能是 null";
+        assert previous != null : "index检查已通过，节点不可能为 null";
         Node node = new Node(value, previous.next, previous);
         previous.next = node;
         if (index == this.size - 1) {

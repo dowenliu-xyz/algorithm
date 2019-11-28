@@ -7,20 +7,22 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /**
- * {@code int} 循环单链表
- * <p>create at 2019/11/27</p>
+ * {@code int} 循环双向链表
+ * <p>create at 2019/11/28</p>
  *
  * @author liufl
  * @since version 1.0
  */
-public class IntCircularSinglyLinkedList implements IntLinkedList {
+public class IntCircularDoublyLinkedList implements IntLinkedList {
     /**
-     * 链表节点
+     * 双向链表节点
      */
     public static class Node implements IntLinkedList.Node {
         private int value;
         @NotNull
         private Node next; // 在循环链表中，next始终不为null
+        @NotNull
+        private Node previous; // 在循环链表中，previous始终不为null
 
         /**
          * 构建头节点
@@ -30,18 +32,21 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
         private Node(int value) {
             this.value = value;
             this.next = this;
+            this.previous = this;
         }
 
         /**
          * 构建节点
          *
-         * @param value 节点存储的值
-         * @param next  后续节点。不允许为 {@code null}
-         * @throws NullPointerException 后续节点为空
+         * @param value    节点存储的值
+         * @param next     后续节点
+         * @param previous 前续节点
+         * @throws NullPointerException 后续或前续节点为空
          */
-        private Node(int value, @NotNull Node next) {
+        private Node(int value, @NotNull Node next, @NotNull Node previous) {
             this.value = value;
             this.next = Objects.requireNonNull(next);
+            this.previous = Objects.requireNonNull(previous);
         }
 
         @Override
@@ -53,6 +58,16 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
         @NotNull
         public Node getNext() {
             return this.next;
+        }
+
+        /**
+         * 返回节点的前续节点
+         *
+         * @return 节点的前续节点
+         */
+        @NotNull
+        public Node getPrevious() {
+            return this.previous;
         }
     }
 
@@ -84,6 +99,15 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
             return new Cursor(this.node, this.node.next,
                     this.next == null ? null : this.next.next,
                     this.position + 1);
+        }
+
+        @Nullable
+        public Cursor previous() {
+            if (this.previous == null || this.position == 0) {
+                return null;
+            }
+            return new Cursor(this.previous.previous, this.previous,
+                    this.node, this.position - 1);
         }
     }
 
@@ -141,14 +165,22 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
                     this.size
             );
         }
-        Cursor cursor = new Cursor(
-                this.tail,
-                this.head,
-                this.head == null ? null : this.head.next,
-                0
-        );
+        boolean forward = index <= this.size / 2;
+        Cursor cursor = forward ?
+                new Cursor(
+                        this.tail,
+                        this.head,
+                        this.head == null ? null : this.head.next,
+                        0
+                ) :
+                new Cursor(
+                        this.tail == null ? null : this.tail.previous,
+                        this.tail,
+                        this.head,
+                        this.size - 1
+                );
         while (cursor != null && cursor.position != index) {
-            cursor = cursor.next();
+            cursor = forward ? cursor.next() : cursor.previous();
         }
         return cursor;
     }
@@ -168,13 +200,15 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
     }
 
     @Nullable
-    private Cursor find(@Nullable Cursor cursor, int value) {
-        while (cursor != null && cursor.node != null &&
-                cursor.position < this.size) {
+    private Cursor find(@Nullable Cursor cursor, int value, boolean forward) {
+        while (cursor != null && cursor.node != null) {
+            if (cursor.position < 0 || cursor.position >= this.size) {
+                break;
+            }
             if (cursor.node.value == value) {
                 return cursor;
             }
-            cursor = cursor.next();
+            cursor = forward ? cursor.next() : cursor.previous();
         }
         return null;
     }
@@ -182,7 +216,7 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
     @Override
     @Nullable
     public Node nodeOfValue(int value) {
-        Cursor cursor = this.find(this.cursorAt(0), value);
+        Cursor cursor = this.find(this.cursorAt(0), value, true);
         return cursor == null ? null : cursor.node;
     }
 
@@ -210,37 +244,34 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
         Node previous = cursor.previous;
         assert previous != null && next != null :
                 "循环链表非空，各节点不可能是 null";
-        Node node = new Node(value, next);
+        Node node = new Node(value, next, previous);
         previous.next = node;
         if (index == 0) {
             this.head = node;
         }
+        next.previous = node;
         if (index == this.size) {
             this.tail = node;
         }
         this.size++;
     }
 
-    @SuppressWarnings("DuplicatedCode")
     @Override
     public void addAfter(int index, int value)
             throws IndexOutOfBoundsException {
         this.checkAccessIndex(index);
-        if (index == this.size - 1) {
-            assert this.head != null : "index检查已通过，链表非空，" +
-                    "头节点不可能为 null";
-            Node node = new Node(value, this.head);
-            assert this.tail != null : "索引指向尾节点，尾节点不应为 null";
-            this.tail.next = node;
-            this.tail = node;
-            this.size++;
-            return;
-        }
         Cursor cursor = this.cursorAt(index);
         assert cursor != null : "index检查已通过，链表必定不为空，游标不可能为 null";
         Node previous = cursor.node;
-        assert previous != null : "index检查已通过，节点不可能为 null";
-        previous.next = new Node(value, previous.next);
+        Node next = cursor.next;
+        assert previous != null && next != null :
+                "index检查已通过，节点不可能为 null";
+        Node node = new Node(value, next, previous);
+        previous.next = node;
+        next.previous = node;
+        if (index == this.size - 1) {
+            this.tail = node;
+        }
         this.size++;
     }
 
@@ -263,6 +294,7 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
             if (cursor.position == 0) {
                 this.head = next;
             }
+            next.previous = previous;
             if (cursor.position == this.size - 1) {
                 this.tail = previous;
             }
@@ -286,7 +318,7 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
 
     @Override
     public boolean removeBy(int value) {
-        Cursor cursor = this.find(this.cursorAt(0), value);
+        Cursor cursor = this.find(this.cursorAt(0), value, true);
         if (cursor == null) {
             return false;
         }
@@ -296,26 +328,20 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
 
     @Override
     public int indexOf(int value) {
-        Cursor cursor = this.find(this.cursorAt(0), value);
+        Cursor cursor = this.find(this.cursorAt(0), value, true);
         if (cursor == null) {
             return -1;
         }
         return cursor.position;
     }
 
-    @SuppressWarnings("DuplicatedCode")
     @Override
     public int lastIndexOf(int value) {
-        Cursor cursor = this.cursorAt(0);
-        int lastPosition = -1;
-        while (cursor != null) {
-            cursor = this.find(cursor, value);
-            if (cursor != null) {
-                lastPosition = cursor.position;
-                cursor = cursor.next();
-            }
+        Cursor cursor = this.find(this.cursorAt(this.size - 1), value, false);
+        if (cursor == null) {
+            return -1;
         }
-        return lastPosition;
+        return cursor.position;
     }
 
     @SuppressWarnings("DuplicatedCode")
@@ -332,6 +358,7 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
         int position = 0;
         while (position < this.size) {
             node.next = previous;
+            node.previous = next;
             previous = node;
             node = next;
             if (next != this.head) {
@@ -360,9 +387,9 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
     @SuppressWarnings("DuplicatedCode")
     @Override
     public IntList clone() {
-        IntCircularSinglyLinkedList clone;
+        IntCircularDoublyLinkedList clone;
         try {
-            clone = (IntCircularSinglyLinkedList) super.clone();
+            clone = (IntCircularDoublyLinkedList) super.clone();
             clone.head = null;
             clone.tail = null;
             clone.size = 0;
@@ -381,6 +408,6 @@ public class IntCircularSinglyLinkedList implements IntLinkedList {
 
     @Override
     public String toString() {
-        return "IntCircularSinglyLinkedList" + Arrays.toString(this.toArray());
+        return "IntCirclularDoublyLinkedList" + Arrays.toString(this.toArray());
     }
 }
