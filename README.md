@@ -122,3 +122,6 @@
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_09_queue/CircularIntArrayQueueTest.java)
         * [基于单链表的int链式队列](./java/src/main/java/xyz/dowenliu/study/algo/_09_queue/IntLinkedQueue.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_09_queue/IntLinkedQueueTest.java)
+* 最近的请求次数
+    * [LeetCode#933](https://leetcode-cn.com/problems/number-of-recent-calls/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38320046/)
