@@ -98,3 +98,8 @@
     * [LeetCode#155](https://leetcode-cn.com/problems/min-stack/)
         * [提交](https://leetcode-cn.com/submissions/detail/38274598/)
         使用链式栈。每个节点上存储节点值和节点存入时的栈最小值。时间复杂度 O(1)；空间复杂度 O(n)
+
+* 棒球比赛
+    * [LeetCode#682](https://leetcode-cn.com/problems/baseball-game/)
+        * [提交](https://leetcode-cn.com/submissions/detail/38305791/)
+        使用线性栈解决。时间复杂度 O(n)；空间复杂度 O(n)
