@@ -67,7 +67,12 @@ public class IntArraySortTest {
     }
 
     @Test
-    public void getMerge() {
+    public void testMerge() {
         testTemplate(this.array, new MergeIntArraySort());
+    }
+
+    @Test
+    public void testQuick() {
+        testTemplate(this.array, new QuickIntArraySort());
     }
 }
