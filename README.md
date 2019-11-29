@@ -103,3 +103,7 @@
     * [LeetCode#682](https://leetcode-cn.com/problems/baseball-game/)
         * [提交](https://leetcode-cn.com/submissions/detail/38305791/)
         使用线性栈解决。时间复杂度 O(n)；空间复杂度 O(n)
+* 比较含退格的字符串
+    * [LeetCode#844](https://leetcode-cn.com/problems/backspace-string-compare/)
+        * [提交](https://leetcode-cn.com/submissions/detail/38306828/)
+        使用线性栈。时间复杂度 O(n)；空间复杂度 O(n)
