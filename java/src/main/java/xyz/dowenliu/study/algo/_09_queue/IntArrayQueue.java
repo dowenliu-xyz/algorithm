@@ -11,9 +11,9 @@ import java.util.NoSuchElementException;
  * @since version 1.0
  */
 public class IntArrayQueue implements IntQueue {
-    private int[] data;
-    private int head = 0;
-    private int tail = 0;
+    protected int[] data;
+    protected int head = 0;
+    protected int tail = 0;
 
     /**
      * 构造一个 {@code int} 线性队列。

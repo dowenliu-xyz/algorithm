@@ -116,3 +116,5 @@
     * Java实现
         * [基于数组的容量固定int线性队列](./java/src/main/java/xyz/dowenliu/study/algo/_09_queue/IntArrayQueue.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_09_queue/IntArrayQueueTest.java)
+        * [基于数组的自动扩容int线性队列](./java/src/main/java/xyz/dowenliu/study/algo/_09_queue/DynamicIntArrayQueue.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_09_queue/DynamicIntArrayQueueTest.java)
