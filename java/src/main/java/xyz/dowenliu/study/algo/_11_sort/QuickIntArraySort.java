@@ -33,29 +33,19 @@ public class QuickIntArraySort implements IntArraySort {
     }
 
     private int partition(@NotNull int[] array, int left, int right) {
-        assert left < right;
         int pivot = array[right];
-        int l = left;
-        int r = right - 1;
-        assert l <= r;
-        while (l < r) {
-            if (array[l] < pivot) {
-                l++;
-                continue;
+        int storeIndex = left;
+        for (int i = left; i <= right; i++) {
+            if (array[i] < pivot) {
+                int tmp = array[storeIndex];
+                array[storeIndex++] = array[i];
+                array[i] = tmp;
             }
-            if (array[r] >= pivot) {
-                r--;
-                continue;
-            }
-            int temp = array[l];
-            array[l] = array[r];
-            array[r] = temp;
         }
-        if (array[l] < pivot)
-            return right;
-        int temp = array[l];
-        array[l] = pivot;
-        array[right] = temp;
-        return l;
+
+        array[right] = array[storeIndex];
+        array[storeIndex] = pivot;
+
+        return storeIndex;
     }
 }
