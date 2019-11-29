@@ -131,3 +131,9 @@
         入栈 时间复杂度 O(1)；空间复杂度 O(1)  
         出栈、查看栈顶元素 时间复杂度 O(n)；空间复杂度 O(1)
         判断是否栈空 时间复杂度 O(1)；空间复杂度 O(1)
+* 用栈实现队列
+    * [LeetCode#232](https://leetcode-cn.com/problems/implement-queue-using-stacks/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38325084/)
+        入队 时间复杂度 O(1)；空间复杂度 O(1)  
+        出队、查看队头元素 时间复杂度 最好 O(1)、最差 O(n)、平均 O(1)；空间复杂度 O(1)  
+        判断是否队空 时间复杂度 O(1)；空间复杂度 O(1)
