@@ -10,7 +10,10 @@ package xyz.dowenliu.study.algo._11_sort;
 public class BetterBobbleIntArraySort2 implements IntArraySort {
     @Override
     public void sort(int[] array) {
-        if (array.length == 0) {
+        if (array == null) {
+            return;
+        }
+        if (array.length <= 1) {
             return;
         }
         int lastExchange = 0;

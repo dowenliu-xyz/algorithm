@@ -51,4 +51,9 @@ public class IntArraySortTest {
     public void testBetterBobble2() {
         testTemplate(this.array, new BetterBobbleIntArraySort2());
     }
+
+    @Test
+    public void testInsertion() {
+        testTemplate(this.array, new InsertionIntArraySort());
+    }
 }

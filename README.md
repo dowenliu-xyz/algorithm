@@ -145,5 +145,7 @@
         通过测试可以发现性能提升极为有限
         * [优化的冒泡排序2](./java/src/main/java/xyz/dowenliu/study/algo/_11_sort/BetterBobbleIntArraySort2.java)
         通过测试可以发现性能提升极也为有限
+        * [插入排序](./java/src/main/java/xyz/dowenliu/study/algo/_11_sort/InsertionIntArraySort.java)
+        同样是时间复杂度 O(n) 的排序算法，插入比冒泡要快的多。
 
       [测试](./java/src/test/java/xyz/dowenliu/study/algo/_11_sort/IntArraySortTest.java)
