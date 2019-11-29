@@ -42,4 +42,11 @@ public class IntArraySortTest {
         System.arraycopy(this.array, 0, array, 0, this.array.length);
         testTemplate(array, new BobbleIntArraySort());
     }
+
+    @Test
+    public void testBetterBobble1() {
+        int[] array = new int[this.array.length];
+        System.arraycopy(this.array, 0, array, 0, this.array.length);
+        testTemplate(array, new BetterBobbleIntArraySort1());
+    }
 }
