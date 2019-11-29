@@ -111,3 +111,8 @@
     * [LeetCode#1047](https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38309066/)
         时间复杂度 O(n)；空间复杂度 O(n)
+## 队列
+* 实现队列结构
+    * Java实现
+        * [基于数组的容量固定int线性队列](./java/src/main/java/xyz/dowenliu/study/algo/_09_queue/IntArrayQueue.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_09_queue/IntArrayQueueTest.java)
