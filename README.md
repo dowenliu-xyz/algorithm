@@ -120,3 +120,5 @@
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_09_queue/DynamicIntArrayQueueTest.java)
         * [基于数组的容量固定int循环队列](./java/src/main/java/xyz/dowenliu/study/algo/_09_queue/CircularIntArrayQueue.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_09_queue/CircularIntArrayQueueTest.java)
+        * [基于单链表的int链式队列](./java/src/main/java/xyz/dowenliu/study/algo/_09_queue/IntLinkedQueue.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_09_queue/IntLinkedQueueTest.java)
