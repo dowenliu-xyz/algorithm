@@ -147,5 +147,7 @@
         通过测试可以发现性能提升极也为有限
         * [插入排序](./java/src/main/java/xyz/dowenliu/study/algo/_11_sort/InsertionIntArraySort.java)
         同样是时间复杂度 O(n) 的排序算法，插入比冒泡要快的多。
+        * [选择排序](./java/src/main/java/xyz/dowenliu/study/algo/_11_sort/SelectionIntArraySort.java)
+        同样是时间复杂度 O(n) 的排序算法，插入比冒泡要快的多，但比插入慢得多，而且，选择排序是不稳定排序。
 
       [测试](./java/src/test/java/xyz/dowenliu/study/algo/_11_sort/IntArraySortTest.java)

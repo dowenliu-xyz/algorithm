@@ -56,4 +56,9 @@ public class IntArraySortTest {
     public void testInsertion() {
         testTemplate(this.array, new InsertionIntArraySort());
     }
+
+    @Test
+    public void testSelection() {
+        testTemplate(this.array, new SelectionIntArraySort());
+    }
 }
