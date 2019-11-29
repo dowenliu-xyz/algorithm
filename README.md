@@ -142,6 +142,8 @@
     * Java实现
         * [冒泡排序](./java/src/main/java/xyz/dowenliu/study/algo/_11_sort/BobbleIntArraySort.java)
         * [优化的冒泡排序1](./java/src/main/java/xyz/dowenliu/study/algo/_11_sort/BetterBobbleIntArraySort1.java)
-        通过可以发现性能提升极为有限
+        通过测试可以发现性能提升极为有限
+        * [优化的冒泡排序2](./java/src/main/java/xyz/dowenliu/study/algo/_11_sort/BetterBobbleIntArraySort2.java)
+        通过测试可以发现性能提升极也为有限
 
       [测试](./java/src/test/java/xyz/dowenliu/study/algo/_11_sort/IntArraySortTest.java)

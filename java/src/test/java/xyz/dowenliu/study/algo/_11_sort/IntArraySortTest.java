@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,15 +39,16 @@ public class IntArraySortTest {
 
     @Test
     public void testBobble() {
-        int[] array = new int[this.array.length];
-        System.arraycopy(this.array, 0, array, 0, this.array.length);
-        testTemplate(array, new BobbleIntArraySort());
+        testTemplate(this.array, new BobbleIntArraySort());
     }
 
     @Test
     public void testBetterBobble1() {
-        int[] array = new int[this.array.length];
-        System.arraycopy(this.array, 0, array, 0, this.array.length);
-        testTemplate(array, new BetterBobbleIntArraySort1());
+        testTemplate(this.array, new BetterBobbleIntArraySort1());
+    }
+
+    @Test
+    public void testBetterBobble2() {
+        testTemplate(this.array, new BetterBobbleIntArraySort2());
     }
 }
