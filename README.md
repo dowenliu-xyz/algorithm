@@ -125,3 +125,9 @@
 * 最近的请求次数
     * [LeetCode#933](https://leetcode-cn.com/problems/number-of-recent-calls/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38320046/)
+* 用队列实现栈
+    * [LeetCode#225](https://leetcode-cn.com/problems/implement-stack-using-queues/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38323262/)  
+        入栈 时间复杂度 O(1)；空间复杂度 O(1)  
+        出栈、查看栈顶元素 时间复杂度 O(n)；空间复杂度 O(1)
+        判断是否栈空 时间复杂度 O(1)；空间复杂度 O(1)
