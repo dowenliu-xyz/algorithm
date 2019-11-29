@@ -79,9 +79,9 @@
 ## 栈
 * 实现栈结构
     * Java实现
-        * [基于数组的线性int栈](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/IntArrayStack.java)
+        * [基于数组的顺序int栈](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/IntArrayStack.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_08_stack/IntArrayStackTest.java)
-        * [自动扩容数组线性int栈](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/DynamicExpandIntArrayStack.java)
+        * [自动扩容数组顺序int栈](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/DynamicExpandIntArrayStack.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_08_stack/DynamicExpandIntArrayStackTest.java)
         * [基于单链表的链式int栈](./java/src/main/java/xyz/dowenliu/study/algo/_08_stack/IntLinkedStack.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_08_stack/IntLinkedStackTest.java)
@@ -93,7 +93,7 @@
 * 有效的括号
     * [LeetCode#20](https://leetcode-cn.com/problems/valid-parentheses/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38268503/)
-        使用了线性栈。时间复杂度 O(n)；空间复杂度 O(n)
+        使用了顺序栈。时间复杂度 O(n)；空间复杂度 O(n)
 * 最小栈
     * [LeetCode#155](https://leetcode-cn.com/problems/min-stack/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38274598/)
@@ -102,11 +102,11 @@
 * 棒球比赛
     * [LeetCode#682](https://leetcode-cn.com/problems/baseball-game/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38305791/)
-        使用线性栈解决。时间复杂度 O(n)；空间复杂度 O(n)
+        使用顺序栈解决。时间复杂度 O(n)；空间复杂度 O(n)
 * 比较含退格的字符串
     * [LeetCode#844](https://leetcode-cn.com/problems/backspace-string-compare/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38306828/)
-        使用线性栈。时间复杂度 O(n)；空间复杂度 O(n)
+        使用顺序栈。时间复杂度 O(n)；空间复杂度 O(n)
 * 删除字符串中的所有相邻重复项
     * [LeetCode#1047](https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38309066/)
@@ -114,9 +114,9 @@
 ## 队列
 * 实现队列结构
     * Java实现
-        * [基于数组的容量固定int线性队列](./java/src/main/java/xyz/dowenliu/study/algo/_09_queue/IntArrayQueue.java)
+        * [基于数组的容量固定int顺序队列](./java/src/main/java/xyz/dowenliu/study/algo/_09_queue/IntArrayQueue.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_09_queue/IntArrayQueueTest.java)
-        * [基于数组的自动扩容int线性队列](./java/src/main/java/xyz/dowenliu/study/algo/_09_queue/DynamicIntArrayQueue.java)
+        * [基于数组的自动扩容int顺序队列](./java/src/main/java/xyz/dowenliu/study/algo/_09_queue/DynamicIntArrayQueue.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_09_queue/DynamicIntArrayQueueTest.java)
         * [基于数组的容量固定int循环队列](./java/src/main/java/xyz/dowenliu/study/algo/_09_queue/CircularIntArrayQueue.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_09_queue/CircularIntArrayQueueTest.java)
