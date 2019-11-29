@@ -1,6 +1,7 @@
 package xyz.dowenliu.study.algo._11_sort;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.time.Duration;
@@ -38,16 +39,19 @@ public class IntArraySortTest {
     }
 
     @Test
+    @Ignore
     public void testBobble() {
         testTemplate(this.array, new BobbleIntArraySort());
     }
 
     @Test
+    @Ignore
     public void testBetterBobble1() {
         testTemplate(this.array, new BetterBobbleIntArraySort1());
     }
 
     @Test
+    @Ignore
     public void testBetterBobble2() {
         testTemplate(this.array, new BetterBobbleIntArraySort2());
     }
@@ -60,5 +64,10 @@ public class IntArraySortTest {
     @Test
     public void testSelection() {
         testTemplate(this.array, new SelectionIntArraySort());
+    }
+
+    @Test
+    public void getMerge() {
+        testTemplate(this.array, new MergeIntArraySort());
     }
 }
