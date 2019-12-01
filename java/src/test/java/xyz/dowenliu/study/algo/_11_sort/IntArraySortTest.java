@@ -4,10 +4,10 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import xyz.dowenliu.study.algo._13_sort.IntCountingSort;
+import xyz.dowenliu.study.algo._13_sort.IntRadixSort;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Arrays;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -80,5 +80,10 @@ public class IntArraySortTest {
     @Test
     public void testCounting() {
         testTemplate(this.array, new IntCountingSort());
+    }
+
+    @Test
+    public void testRadix() {
+        testTemplate(this.array, new IntRadixSort());
     }
 }

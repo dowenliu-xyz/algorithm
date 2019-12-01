@@ -10,6 +10,7 @@ import xyz.dowenliu.study.algo._11_sort.IntArraySort;
  * @since version 1.0
  */
 public class IntCountingSort implements IntArraySort {
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public void sort(int[] array) {
         if (array == null) {
