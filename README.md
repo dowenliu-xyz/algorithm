@@ -138,7 +138,7 @@
         出队、查看队头元素 时间复杂度 最好 O(1)、最差 O(n)、平均 O(1)；空间复杂度 O(1)  
         判断是否队空 时间复杂度 O(1)；空间复杂度 O(1)
 ## 排序
-* 实现排序算法
+* 基础排序算法
     * Java实现
         * [冒泡排序](./java/src/main/java/xyz/dowenliu/study/algo/_11_sort/BobbleIntArraySort.java)
         * [优化的冒泡排序1](./java/src/main/java/xyz/dowenliu/study/algo/_11_sort/BetterBobbleIntArraySort1.java)
@@ -153,3 +153,7 @@
         * [快速排序](./java/src/main/java/xyz/dowenliu/study/algo/_11_sort/QuickIntArraySort.java)
 
       [测试](./java/src/test/java/xyz/dowenliu/study/algo/_11_sort/IntArraySortTest.java)
+* 线性排序
+    * Java实现
+        * [桶排序](./java/src/main/java/xyz/dowenliu/study/algo/_13_sort/BucketSort.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_13_sort/BucketSortTest.java)
