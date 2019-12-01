@@ -3,6 +3,7 @@ package xyz.dowenliu.study.algo._11_sort;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import xyz.dowenliu.study.algo._13_sort.IntCountingSort;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -74,5 +75,10 @@ public class IntArraySortTest {
     @Test
     public void testQuick() {
         testTemplate(this.array, new QuickIntArraySort());
+    }
+
+    @Test
+    public void testCounting() {
+        testTemplate(this.array, new IntCountingSort());
     }
 }

@@ -157,3 +157,5 @@
     * Java实现
         * [桶排序](./java/src/main/java/xyz/dowenliu/study/algo/_13_sort/BucketSort.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_13_sort/BucketSortTest.java)
+        * [计数排序](./java/src/main/java/xyz/dowenliu/study/algo/_13_sort/IntCountingSort.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_11_sort/IntArraySortTest.java) #testCounting()
