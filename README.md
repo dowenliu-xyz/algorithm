@@ -175,3 +175,7 @@
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_16_binary_search/FirstMatchingOrLargerThanIntBinarySearchTest.java)
         * [查找最后一个小于等于给定值的元素的二分查找](./java/src/main/java/xyz/dowenliu/study/algo/_16_binary_search/LastMatchingOrLessThanIntBinarySearch.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_16_binary_search/LastMatchingOrLessThanIntBinarySearchTest.java)
+* 搜索插入位置
+    * [LeetCode#35](https://leetcode-cn.com/problems/search-insert-position/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38561992/)
+        二分查找的变形。查找第一个大于等于给定值的元素索引即可。如果没有找到，说明插入值比数组中所有值都大，在尾部插入，返回数组长度值。时间复杂度 O(logN)；空间复杂度 O(1)
