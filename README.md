@@ -198,4 +198,8 @@
     * [LeetCode#74](https://leetcode-cn.com/problems/search-a-2d-matrix/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38633925/)
         按题意，二维数组相当于平均分段的连续升序数组。使用二分查找，只需计算 线性索引对应的矩阵索引即可。
-        时间复杂度 `O(log(m*n))`；空间复杂度 `O(1)`。  
+        时间复杂度 `O(log(m*n))`；空间复杂度 `O(1)`。
+* 第一个错误的版本
+    * [LeetCode#278](https://leetcode-cn.com/problems/first-bad-version/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38636895/)
+        时间复杂度 `O(log(n))`；空间复杂度 `O(1)`
