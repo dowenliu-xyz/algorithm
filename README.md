@@ -207,3 +207,7 @@
     * [LeetCode#374](https://leetcode-cn.com/problems/guess-number-higher-or-lower/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38638464/)
         时间复杂度 `O(log(n))`；空间复杂度 `O(1)`
+* 排列硬币
+    * [LeetCode#441](https://leetcode-cn.com/problems/arranging-coins/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38640637/)
+        二分查找法。注意`int`计算可能溢出。时间复杂度 `O(log(n))`；空间复杂度 `O(1)`
