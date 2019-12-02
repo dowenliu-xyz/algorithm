@@ -203,3 +203,7 @@
     * [LeetCode#278](https://leetcode-cn.com/problems/first-bad-version/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38636895/)
         时间复杂度 `O(log(n))`；空间复杂度 `O(1)`
+* 猜数字大小
+    * [LeetCode#374](https://leetcode-cn.com/problems/guess-number-higher-or-lower/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38638464/)
+        时间复杂度 `O(log(n))`；空间复杂度 `O(1)`
