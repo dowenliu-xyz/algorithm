@@ -178,7 +178,7 @@
 * 搜索插入位置
     * [LeetCode#35](https://leetcode-cn.com/problems/search-insert-position/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38561992/)
-        二分查找的变形。查找第一个大于等于给定值的元素索引即可。如果没有找到，说明插入值比数组中所有值都大，在尾部插入，返回数组长度值。时间复杂度 `O(log n)`；空间复杂度 `O(1)`
+        二分查找的变形。查找第一个大于等于给定值的元素索引即可。如果没有找到，说明插入值比数组中所有值都大，在尾部插入，返回数组长度值。时间复杂度 `O(log(n))`；空间复杂度 `O(1)`
 * 搜索旋转排序数组
     * [LeetCode#33](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38581894/)
@@ -188,9 +188,14 @@
         * [Java提交](https://leetcode-cn.com/submissions/detail/38600438/)
         先使用二分查找找第一个位置。如果没有找到，直接返回 `[-1, -1]` 。
         如果找到第一个位置 `first`，再使用二分查找在 `first` 到 `nums.length - 1` 区间查找最后位置（这个位置一定存在，最小是`first`)。
-        时间复杂度 `O(log n)`；空间复杂度 `O(1)`
+        时间复杂度 `O(log(n))`；空间复杂度 `O(1)`
 * x 的平方根
     * [LeetCode#69](https://leetcode-cn.com/problems/sqrtx/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38621334/)
         二分查找的变形。要查找的数处于一片连续整数区间`[0, x]`中，且与查找位置恰好相同，数组被省略。负数的情况特别处理，返回`-1`。
-        时间复杂度 `O(log n)`；空间复杂度 `O(1)`
+        时间复杂度 `O(log(n))`；空间复杂度 `O(1)`
+* 搜索二维矩阵
+    * [LeetCode#74](https://leetcode-cn.com/problems/search-a-2d-matrix/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38633925/)
+        按题意，二维数组相当于平均分段的连续升序数组。使用二分查找，只需计算 线性索引对应的矩阵索引即可。
+        时间复杂度 `O(log(m*n))`；空间复杂度 `O(1)`。  
