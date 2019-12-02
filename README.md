@@ -167,3 +167,5 @@
         * [简单二分查找](./java/src/main/java/xyz/dowenliu/study/algo/_15_binary_search/SimpleIntBinarySearch.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_15_binary_search/SimpleIntBinarySearchTest.java)
         假设数组中没有重复元素
+        * [查找第一个匹配的二分查找](./java/src/main/java/xyz/dowenliu/study/algo/_16_binary_search/FirstMatchingIntBinarySearch.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_16_binary_search/FirstMatchingIntBinarySearchTest.java)

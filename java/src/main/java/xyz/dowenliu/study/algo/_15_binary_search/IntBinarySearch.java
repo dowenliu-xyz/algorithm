@@ -1,5 +1,7 @@
 package xyz.dowenliu.study.algo._15_binary_search;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * 对 {@code int} 进行二分查找
  * <p>create at 2019/12/2</p>
@@ -13,6 +15,7 @@ public interface IntBinarySearch {
      * @param array 已升序排好序的数组
      * @param key 要查找的值
      * @return 值所在位置索引。如果没有找到，返回 {@code -1}
+     * @throws NullPointerException 数组为 {@code null}
      */
-    int search(int[] array, int key);
+    int search(@NotNull int[] array, int key) throws NullPointerException;
 }

@@ -1,5 +1,7 @@
 package xyz.dowenliu.study.algo._15_binary_search;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * 简单二分查找。假设数组没有重复元素
  * <p>create at 2019/12/2</p>
@@ -9,7 +11,7 @@ package xyz.dowenliu.study.algo._15_binary_search;
  */
 public class SimpleIntBinarySearch implements IntBinarySearch {
     @Override
-    public int search(int[] array, int key) {
+    public int search(@NotNull int[] array, int key) {
         int left = 0;
         int right = array.length - 1;
         while (left <= right) {
