@@ -214,3 +214,8 @@
 * 手写二分查找
     * [LeetCode#704](https://leetcode-cn.com/problems/binary-search/)
         * [Java提交](https://leetcode-cn.com/problems/binary-search/submissions/) 最简单的二分查找，没有重复元素
+* 寻找比目标字母大的最小字母
+    * [LeetCode#744](https://leetcode-cn.com/problems/find-smallest-letter-greater-than-target/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38642461/)
+        先取下一字母，再执行查找第一个大于等于下一字母的元素的二分查找
+        时间复杂度 `O(log(n))`；空间复杂度 `O(1)`
