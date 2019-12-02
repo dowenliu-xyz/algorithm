@@ -211,3 +211,6 @@
     * [LeetCode#441](https://leetcode-cn.com/problems/arranging-coins/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38640637/)
         二分查找法。注意`int`计算可能溢出。时间复杂度 `O(log(n))`；空间复杂度 `O(1)`
+* 手写二分查找
+    * [LeetCode#704](https://leetcode-cn.com/problems/binary-search/)
+        * [Java提交](https://leetcode-cn.com/problems/binary-search/submissions/) 最简单的二分查找，没有重复元素
