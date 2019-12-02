@@ -170,4 +170,6 @@
         * [查找第一个匹配的二分查找](./java/src/main/java/xyz/dowenliu/study/algo/_16_binary_search/FirstMatchingIntBinarySearch.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_16_binary_search/FirstMatchingIntBinarySearchTest.java)
         * [查找最后匹配的二分查找](./java/src/main/java/xyz/dowenliu/study/algo/_16_binary_search/LastMatchingIntBinarySearch.java)
-                               及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_16_binary_search/LastMatchingIntBinarySearchTest.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_16_binary_search/LastMatchingIntBinarySearchTest.java)
+        * [查找第一个大于等于给定值的元素的二分查找](./java/src/main/java/xyz/dowenliu/study/algo/_16_binary_search/FirstMatchingOrLargerThanIntBinarySearch.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_16_binary_search/FirstMatchingOrLargerThanIntBinarySearchTest.java)
