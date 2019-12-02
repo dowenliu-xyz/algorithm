@@ -189,3 +189,8 @@
         先使用二分查找找第一个位置。如果没有找到，直接返回 `[-1, -1]` 。
         如果找到第一个位置 `first`，再使用二分查找在 `first` 到 `nums.length - 1` 区间查找最后位置（这个位置一定存在，最小是`first`)。
         时间复杂度 `O(log n)`；空间复杂度 `O(1)`
+* x 的平方根
+    * [LeetCode#69](https://leetcode-cn.com/problems/sqrtx/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38621334/)
+        二分查找的变形。要查找的数处于一片连续整数区间`[0, x]`中，且与查找位置恰好相同，数组被省略。负数的情况特别处理，返回`-1`。
+        时间复杂度 `O(log n)`；空间复杂度 `O(1)`
