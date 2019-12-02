@@ -179,3 +179,7 @@
     * [LeetCode#35](https://leetcode-cn.com/problems/search-insert-position/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38561992/)
         二分查找的变形。查找第一个大于等于给定值的元素索引即可。如果没有找到，说明插入值比数组中所有值都大，在尾部插入，返回数组长度值。时间复杂度 O(logN)；空间复杂度 O(1)
+* 搜索旋转排序数组
+    * [LeetCode#33](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38581894/)
+        先查找偏移量，再带着偏移量进行二分查找。查找偏移量的过程类似二分查找，时间复杂度 O(N)。总体的时间复杂度 O(n)，空间复杂度 O(1)
