@@ -161,3 +161,9 @@
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_11_sort/IntArraySortTest.java) #testCounting()
         * [基数排序](./java/src/main/java/xyz/dowenliu/study/algo/_13_sort/IntRadixSort.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_11_sort/IntArraySortTest.java) #testRadix()
+## 二分查找
+* 实现二分查找
+    * Java实现
+        * [简单二分查找](./java/src/main/java/xyz/dowenliu/study/algo/_15_binary_search/SimpleIntBinarySearch.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_15_binary_search/SimpleIntBinarySearchTest.java)
+        假设数组中没有重复元素
