@@ -239,3 +239,5 @@
     * Java实现
         * [简单的LRU缓存](./java/src/main/java/xyz/dowenliu/study/algo/_18_hashtable/SimpleLRUCache.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_18_hashtable/SimpleLRUCacheTest.java)
+        * [基于双向链表+散列表的LRU缓存](./java/src/main/java/xyz/dowenliu/study/algo/_20_hashtable/LRUCache.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_20_hashtable/LRUCacheTest.java)
