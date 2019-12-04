@@ -140,6 +140,9 @@
 * 设计循环队列
     * [LeetCode#622](https://leetcode-cn.com/problems/design-circular-queue/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38917327/)
+* 设计循环双端队列
+    * [LeetCode#641](https://leetcode-cn.com/problems/design-circular-deque/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38919308/)
 ## 排序
 * 基础排序算法
     * Java实现
