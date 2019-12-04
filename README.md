@@ -235,3 +235,7 @@
     * Java实现
         * [链表法散列表](./java/src/main/java/xyz/dowenliu/study/algo/_18_hashtable/HashTable.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_18_hashtable/HashTableTest.java)
+* LRU缓存
+    * Java实现
+        * [简单的LRU缓存](./java/src/main/java/xyz/dowenliu/study/algo/_18_hashtable/SimpleLRUCache.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_18_hashtable/SimpleLRUCacheTest.java)
