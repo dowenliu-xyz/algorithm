@@ -224,4 +224,7 @@
     * Java实现
         * [int跳表](./java/src/main/java/xyz/dowenliu/study/algo/_17_skiplist/IntSkipList.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_17_skiplist/IntSkipListTest.java)
-
+        * [泛型跳表](./java/src/main/java/xyz/dowenliu/study/algo/_17_skiplist/SkipList.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_17_skiplist/SkipListTest.java)
+    * [LeetCode#1206](https://leetcode-cn.com/problems/design-skiplist/)
+        * [Java提交]()
