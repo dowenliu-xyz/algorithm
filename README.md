@@ -261,3 +261,6 @@
     * [LeetCode#451](https://leetcode-cn.com/problems/sort-characters-by-frequency/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38904278/)
         实现方式是考虑使用两个散列表，第一个计数，第二个用于找出现频率最大的字母。使用数组代替HashMap进行散列。
+* 设计哈希集合
+    * [LeetCode#705](https://leetcode-cn.com/problems/design-hashset/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38935511/)
