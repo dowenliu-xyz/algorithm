@@ -230,3 +230,8 @@
         * [Java提交](https://leetcode-cn.com/submissions/detail/38859404/)
         执行用时居然有 991ms ，排名倒数……😂好歹没超时  
         感觉可能是 forwards 数组的问题？CPU高速缓存没法利用，不断去主内存换另一个节点的 forwards 数组？之后有空再分析。
+## 散列表
+* 实现散列表
+    * Java实现
+        * [链表法散列表](./java/src/main/java/xyz/dowenliu/study/algo/_18_hashtable/HashTable.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_18_hashtable/HashTableTest.java)
