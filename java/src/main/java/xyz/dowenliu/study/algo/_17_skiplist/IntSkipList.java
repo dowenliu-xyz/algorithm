@@ -228,7 +228,7 @@ public class IntSkipList {
         while (level > 0) {
             Node next = previous.nextAtLevel(level);
             if (next == null) {
-                level--; // this should never happen
+                level--;
             } else if (next != node) {
                 previous = next;
             } else {
