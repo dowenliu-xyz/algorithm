@@ -137,6 +137,9 @@
         入队 时间复杂度 `O(1)`；空间复杂度 `O(1)`  
         出队、查看队头元素 时间复杂度 最好 `O(1)`、最差 `O(n)`、平均 `O(1)`；空间复杂度 `O(1)`  
         判断是否队空 时间复杂度 `O(1)`；空间复杂度 `O(1)`
+* 设计循环队列
+    * [LeetCode#622](https://leetcode-cn.com/problems/design-circular-queue/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38917327/)
 ## 排序
 * 基础排序算法
     * Java实现
