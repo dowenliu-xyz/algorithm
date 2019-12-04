@@ -76,6 +76,9 @@
     * [LeetCode#876](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38225643/)
         快慢指针法。时间复杂度 `O(n)`；空间复杂度 `O(1)`
+* 设计链表
+    * [LeetCode#707](https://leetcode-cn.com/problems/design-linked-list/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38949242/)
 ## 栈
 * 实现栈结构
     * Java实现
