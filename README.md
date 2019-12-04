@@ -264,3 +264,6 @@
 * 设计哈希集合
     * [LeetCode#705](https://leetcode-cn.com/problems/design-hashset/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38935511/)
+* 设计哈希映射
+    * [LeetCode#706](https://leetcode-cn.com/problems/design-hashmap/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38939346/)
