@@ -251,3 +251,7 @@
         使用HashMap计数。再遍历字符串找第一个出现仅一次的字母索引。 时间复杂度 `O(n)`；空间复杂度 `O(n)`
         * [Java提交2](https://leetcode-cn.com/submissions/detail/38898384/)
         与使用HashMap类似，因题目已经说明只有小写字母，可使用一个长度26的int数组来计数。相比使用HashMap，节省了hash和结点查找的时间
+* 根据字符出现的频率排序
+    * [LeetCode#451](https://leetcode-cn.com/problems/sort-characters-by-frequency/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/38904278/)
+        实现方式是考虑使用两个散列表，第一个计数，第二个用于找出现频率最大的字母。使用数组代替HashMap进行散列。
