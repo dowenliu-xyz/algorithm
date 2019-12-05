@@ -270,3 +270,10 @@
 * 设计哈希映射
     * [LeetCode#706](https://leetcode-cn.com/problems/design-hashmap/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/38939346/)
+## 树
+### 二叉搜索树
+* 实现二叉搜索树
+    * Java实现
+        * [二叉搜索树](./java/src/main/java/xyz/dowenliu/study/algo/_24_tree/BinarySearchTree.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_24_tree/BinarySearchTreeTest.java)
+        实现了二叉搜索树的插入、删除、查找，并实现了前、中、后序以及按层（广度优先）遍历
