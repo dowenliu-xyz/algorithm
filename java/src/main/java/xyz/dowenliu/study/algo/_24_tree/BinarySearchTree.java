@@ -278,7 +278,7 @@ public class BinarySearchTree<@NotNull E> implements BinaryTree<E> {
     @Override
     public void walkLevelOrder(@NotNull ObjIntConsumer<E> consumer) {
         if (this.root == null) return;
-        Queue<Node<@NotNull E>> nodeQueue = new ArrayDeque<>(this.size);
+        Queue<Node<@NotNull E>> nodeQueue = new ArrayDeque<>((int) (Math.log(this.size) / Math.log(2)) + 1);
         nodeQueue.add(this.root);
         int index = 0;
         while (!nodeQueue.isEmpty()) {
