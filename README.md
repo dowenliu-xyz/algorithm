@@ -277,3 +277,7 @@
         * [二叉搜索树](./java/src/main/java/xyz/dowenliu/study/algo/_24_tree/BinarySearchTree.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_24_tree/BinarySearchTreeTest.java)
         实现了二叉搜索树的插入、删除、查找，并实现了前、中、后序以及按层（广度优先）遍历
+        * [红黑树](./java/src/main/java/xyz/dowenliu/study/algo/_24_tree/RedBlackTree.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_24_tree/RedBlackTreeTest.java)
+        实现了二叉搜索树的插入、删除、查找，并实现了前、中、后序以及按层（广度优先）遍历  
+        红黑树是真难写啊，用于三天还没写对，最后不行了，抄了TreeMap代码😥

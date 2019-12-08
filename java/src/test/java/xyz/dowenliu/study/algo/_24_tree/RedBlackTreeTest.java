@@ -5,16 +5,16 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * <p>create at 2019/12/5</p>
+ * <p>create at 2019/12/8</p>
  *
  * @author liufl
  * @since version 1.0
  */
-public class BinarySearchTreeTest {
+public class RedBlackTreeTest {
     @Test
     public void test() {
         // 2, 5, 9, 3, 3, 0, 1, 6
-        BinarySearchTree<Integer> tree = new BinarySearchTree<>(Integer::compareTo);
+        RedBlackTree<Integer> tree = new RedBlackTree<>(Integer::compareTo);
         assertThat(tree.size()).isEqualTo(0);
         assertThat(tree.contains(2)).isFalse();
         assertThat(tree.add(null)).isFalse();
@@ -34,7 +34,7 @@ public class BinarySearchTreeTest {
 
         String toString = tree.toString();
         assertThat(toString).isEqualTo("[0, 1, 2, 3, 3, 5, 6, 9]");
-        assertThat(new BinarySearchTree<>(Integer::compareTo, 2, 5, 9, 3, 3, 0, 1, 6).toString()).isEqualTo(toString);
+        assertThat(new RedBlackTree<>(Integer::compareTo, 2, 5, 9, 3, 3, 0, 1, 6).toString()).isEqualTo(toString);
 
         assertThat(tree.getMax()).isEqualTo(9);
         assertThat(tree.getMin()).isEqualTo(0);

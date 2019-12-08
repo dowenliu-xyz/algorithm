@@ -10,7 +10,7 @@ import java.util.Queue;
 import java.util.function.ObjIntConsumer;
 
 /**
- * 二叉查找树。此实现允许添加比较相等的元素
+ * 二叉查找树。此实现允许添加重复元素
  * <p>create at 2019/12/5</p>
  *
  * @param <E> 节点存储元素类型
@@ -42,6 +42,7 @@ public class BinarySearchTree<@NotNull E> implements BinaryTree<E> {
 
         /**
          * 构造节点。其左右子节点均为 {@code null}
+         *
          * @param element 节点要存储的元素
          */
         public Node(@NotNull E element) {
@@ -66,6 +67,7 @@ public class BinarySearchTree<@NotNull E> implements BinaryTree<E> {
 
     /**
      * 构造空树
+     *
      * @param comparator 元素大小比较器。不能为 {@code null}
      * @throws NullPointerException 元素大小比较器为 {@code null}
      */
@@ -76,8 +78,9 @@ public class BinarySearchTree<@NotNull E> implements BinaryTree<E> {
 
     /**
      * 构造包含指定元素的树
+     *
      * @param comparator 元素大小比较器。不能为 {@code null}
-     * @param elements 要包含的元素。其中值为 {@code null} 的元素不会被添加到树中
+     * @param elements   要包含的元素。其中值为 {@code null} 的元素不会被添加到树中
      * @throws NullPointerException 元素大小比较器为 {@code null}
      */
     @SafeVarargs
@@ -143,6 +146,7 @@ public class BinarySearchTree<@NotNull E> implements BinaryTree<E> {
 
     /**
      * 查找并删除第一个找到的与目标元素相同的元素
+     *
      * @param target 要查找并删除的目标元素
      * @return 树发生了改变，返回 {@code true} ；否则，返回 {@code false}
      */
@@ -206,6 +210,7 @@ public class BinarySearchTree<@NotNull E> implements BinaryTree<E> {
 
     /**
      * 查找并返回树中存储的最小元素
+     *
      * @return 树中存储的最小元素
      */
     @Nullable
@@ -220,6 +225,7 @@ public class BinarySearchTree<@NotNull E> implements BinaryTree<E> {
 
     /**
      * 查找并返回树中存储的最大元素
+     *
      * @return 树中存储的最大元素
      */
     @Nullable
@@ -238,8 +244,8 @@ public class BinarySearchTree<@NotNull E> implements BinaryTree<E> {
     }
 
     private int walkPreOrder(int index,
-                              @Nullable Node<@NotNull E> node,
-                              @NotNull ObjIntConsumer<E> consumer) {
+                             @Nullable Node<@NotNull E> node,
+                             @NotNull ObjIntConsumer<E> consumer) {
         if (node == null) return index;
         consumer.accept(node.element, index++);
         index = walkPreOrder(index, node.left, consumer);
@@ -275,10 +281,12 @@ public class BinarySearchTree<@NotNull E> implements BinaryTree<E> {
         return index;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public void walkLevelOrder(@NotNull ObjIntConsumer<E> consumer) {
         if (this.root == null) return;
-        Queue<Node<@NotNull E>> nodeQueue = new ArrayDeque<>((int) (Math.log(this.size) / Math.log(2)) + 1);
+        int queueSize = (int) (Math.log(this.size) / Math.log(2)) + 1;
+        Queue<Node<@NotNull E>> nodeQueue = new ArrayDeque<>(queueSize);
         nodeQueue.add(this.root);
         int index = 0;
         while (!nodeQueue.isEmpty()) {
@@ -289,6 +297,7 @@ public class BinarySearchTree<@NotNull E> implements BinaryTree<E> {
         }
     }
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
