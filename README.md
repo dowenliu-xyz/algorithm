@@ -281,3 +281,9 @@
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_24_tree/RedBlackTreeTest.java)
         实现了二叉搜索树的插入、删除、查找，并实现了前、中、后序以及按层（广度优先）遍历  
         红黑树是真难写啊，用于三天还没写对，最后不行了，抄了TreeMap代码😥
+* 二叉树的中序遍历
+    * [LeetCode#94](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
+        * [Java提交1](https://leetcode-cn.com/submissions/detail/39324550/)
+        递归法。 时间复杂度 `O(n)`；空间复杂度 `O(n)`
+        * [Java提交2](https://leetcode-cn.com/submissions/detail/39327751/)
+        使用栈，迭代法。时间复杂度 `O(n)`；空间复杂度 `O(n)`
