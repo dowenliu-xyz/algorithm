@@ -287,3 +287,7 @@
         递归法。 时间复杂度 `O(n)`；空间复杂度 `O(n)`
         * [Java提交2](https://leetcode-cn.com/submissions/detail/39327751/)
         使用栈，迭代法。时间复杂度 `O(n)`；空间复杂度 `O(n)`
+* 验证二叉搜索树
+    * [LeetCode#98](https://leetcode-cn.com/problems/validate-binary-search-tree/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/39340570/)
+        递归法。 时间复杂度 `O(n)`；空间复杂度 `O(n)`
