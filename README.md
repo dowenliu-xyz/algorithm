@@ -291,3 +291,6 @@
     * [LeetCode#98](https://leetcode-cn.com/problems/validate-binary-search-tree/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/39340570/)
         递归法。 时间复杂度 `O(n)`；空间复杂度 `O(n)`
+* 相同的树
+    * [LeetCode#100](https://leetcode-cn.com/problems/same-tree/)
+        * [Java提交](https://leetcode-cn.com/submissions/detail/39341673/)
