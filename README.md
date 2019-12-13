@@ -319,3 +319,8 @@
 * 二叉树的层次遍历 II
     * [LeetCode#107](https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/)
         * [Java提交](https://leetcode-cn.com/submissions/detail/39398663/)
+## 堆
+* 实现堆结构
+    * Java实现
+        * [int大顶堆](./java/src/main/java/xyz/dowenliu/study/algo/_28_heap/IntMaxHeap.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_28_heap/IntMaxHeapTest.java)
