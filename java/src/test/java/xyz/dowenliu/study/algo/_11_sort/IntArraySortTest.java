@@ -5,6 +5,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import xyz.dowenliu.study.algo._13_sort.IntCountingSort;
 import xyz.dowenliu.study.algo._13_sort.IntRadixSort;
+import xyz.dowenliu.study.algo._28_heap.HeapIntArraySort;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -85,5 +86,10 @@ public class IntArraySortTest {
     @Test
     public void testRadix() {
         testTemplate(this.array, new IntRadixSort());
+    }
+
+    @Test
+    public void testHeap() {
+        testTemplate(this.array, new HeapIntArraySort());
     }
 }

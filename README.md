@@ -324,3 +324,7 @@
     * Java实现
         * [int大顶堆](./java/src/main/java/xyz/dowenliu/study/algo/_28_heap/IntMaxHeap.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_28_heap/IntMaxHeapTest.java)
+* 实现堆排序
+    * Java实现
+        * [int数组堆排序](./java/src/main/java/xyz/dowenliu/study/algo/_28_heap/HeapIntArraySort.java)
+        及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_11_sort/IntArraySortTest.java) #testHeap()
