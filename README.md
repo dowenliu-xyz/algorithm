@@ -328,3 +328,11 @@
     * Java实现
         * [int数组堆排序](./java/src/main/java/xyz/dowenliu/study/algo/_28_heap/HeapIntArraySort.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_11_sort/IntArraySortTest.java) #testHeap()
+
+## 动态规划
+* 爬楼梯问题
+    * [LeetCode#70](https://leetcode-cn.com/problems/climbing-stairs/)
+        * 回溯法，超时
+        * 通过带缓存记忆的回溯法 [Java提交](https://leetcode-cn.com/submissions/detail/56615740/)
+        * 动态规划 [Java提交](https://leetcode-cn.com/submissions/detail/56617346/)
+        * 动态规划，不使用数组 [Java提交](https://leetcode-cn.com/submissions/detail/56620789/)
