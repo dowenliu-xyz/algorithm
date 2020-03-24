@@ -336,3 +336,5 @@
         * 通过带缓存记忆的回溯法 [Java提交](https://leetcode-cn.com/submissions/detail/56615740/)
         * 动态规划 [Java提交](https://leetcode-cn.com/submissions/detail/56617346/)
         * 动态规划，不使用数组 [Java提交](https://leetcode-cn.com/submissions/detail/56620789/)
+* LeetCode#120 [三角形最小路径和](https://leetcode-cn.com/problems/triangle/)
+    * [Java提交](https://leetcode-cn.com/submissions/detail/56638278/)
