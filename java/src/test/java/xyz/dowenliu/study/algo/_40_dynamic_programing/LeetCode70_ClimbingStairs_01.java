@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @since 1.0
  */
 @RunWith(Parameterized.class)
-public class ClimbingStairs_01 {
+public class LeetCode70_ClimbingStairs_01 {
     @Parameterized.Parameters
     public static Collection<Object[]> params() {
         return Arrays.asList(
@@ -29,7 +29,7 @@ public class ClimbingStairs_01 {
     private final int input;
     private final int expected;
 
-    public ClimbingStairs_01(int input, int expected) {
+    public LeetCode70_ClimbingStairs_01(int input, int expected) {
         this.input = input;
         this.expected = expected;
     }

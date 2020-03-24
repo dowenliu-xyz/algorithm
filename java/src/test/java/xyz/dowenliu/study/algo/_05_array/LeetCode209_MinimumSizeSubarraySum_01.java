@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @since 1.0
  */
 @RunWith(Parameterized.class)
-public class LeetCode209_01 {
+public class LeetCode209_MinimumSizeSubarraySum_01 {
     @Parameterized.Parameters
     public static Collection<TestParam> params() {
         return Arrays.asList(
@@ -28,7 +28,7 @@ public class LeetCode209_01 {
     private Input input;
     private int expected;
 
-    public LeetCode209_01(TestParam param) {
+    public LeetCode209_MinimumSizeSubarraySum_01(TestParam param) {
         this.input = param.input;
         this.expected = param.expected;
     }
