@@ -343,3 +343,8 @@
 * LeetCode#面试题 17.16 [按摩师](https://leetcode-cn.com/problems/the-masseuse-lcci/)
     LeetCode#198 的换皮
     * [Java提交](https://leetcode-cn.com/submissions/detail/56645529/)
+
+## 数学问题
+* LeetCode#892 [三维形体的表面积](https://leetcode-cn.com/problems/surface-area-of-3d-shapes/)
+    * [Java提交](https://leetcode-cn.com/submissions/detail/56774579/)
+        思想：遍历所有坐标，在存在立方体的位置，上下前后左右累加没有被遮挡的面数
