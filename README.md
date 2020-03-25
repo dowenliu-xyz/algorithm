@@ -329,6 +329,12 @@
         * [int数组堆排序](./java/src/main/java/xyz/dowenliu/study/algo/_28_heap/HeapIntArraySort.java)
         及其[测试](./java/src/test/java/xyz/dowenliu/study/algo/_11_sort/IntArraySortTest.java) #testHeap()
 
+## 深度优先搜索和广度优先搜索
+### 深度优先搜索
+* LeetCode#473 [火柴拼正方形](https://leetcode-cn.com/problems/matchsticks-to-square/)
+    * [Java提交](https://leetcode-cn.com/submissions/detail/56804080/)
+        注意：排序后使用较大的长度进行dfs速度会快的多。对比提交 [Java提交](https://leetcode-cn.com/submissions/detail/56802594/)
+
 ## 动态规划
 * 爬楼梯问题
     * [LeetCode#70](https://leetcode-cn.com/problems/climbing-stairs/)
