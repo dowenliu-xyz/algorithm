@@ -21,6 +21,8 @@
         空间复杂度 O(1)；时间复杂度 最好 `O(m + n)` 最坏 `O(mn)`
         * [Java提交2](https://leetcode-cn.com/submissions/detail/38201053/)  
         空间复杂度 O(m)；时间复杂度 `O(m + n)`
+* LeetCode#999 [车的可用捕获量](https://leetcode-cn.com/problems/available-captures-for-rook/)
+    * [Java提交](https://leetcode-cn.com/submissions/detail/57135933/)
 ## 链表
 * 单链表
     * Java实现
